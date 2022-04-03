@@ -58,7 +58,7 @@
             <button class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Movies", new { id = item.Id })'">
                 <i class="fa-solid fa-list"></i> Details
             </button>
-            <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Movies", new { id = item.Id })'">
+            <button class="btn btn-danger" onclick="deleteConfirm('@item.Id')">
                 <i class="fa fa-trash"></i> Delete
             </button>
         </td>
@@ -66,6 +66,56 @@
 }
     </tbody>
 </table>
+
+<div class="modal fade" id="delete-conformation" tabindex="-1" role="dialog" aria-labelledby="deleteconformation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="delete-conformation">
+                    Delete Confirmation
+                </h4>
+                <button type="button" class="btn btn-close" aria-hidden="true" onclick="cancelModal()"/>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Are you sure you want to delete?
+                </p>
+                <div id="deletedValueName" hidden></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" onclick="cancelModal()">Cancel</button>
+                <input type="submit" class="btn btn-danger" value="Delete" onclick="deleteData()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var deleteConfirm = function (val) {
+            $('#deletedValueName').text(val);
+            $('#delete-conformation').modal('show');
+        }
+
+        var cancelModal = function (val) {
+            $('#delete-conformation').modal('hide');
+        }
+
+        var deleteData = function () {
+        $('#divLoading').show();
+        var id = $('#deletedValueName').text();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Delete", "Movies")',
+            data:{id: id},
+            success: function (result) {
+               $("#delete-conformation").modal('hide');
+               window.location.reload();
+            }
+        });
+       }
+    </script>
+}
 
 <style>
     .input-search {

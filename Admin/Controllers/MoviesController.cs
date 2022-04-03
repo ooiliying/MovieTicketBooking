@@ -146,21 +146,21 @@ namespace Admin.Controllers
             return View(movies);
         }
 
-        // POST: Movies/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
-            var movies = await _context.Movies.FindAsync(id);
+        //POST: Movies/Delete/5
+        [HttpPost, ActionName( "Delete" )]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed( Guid id ) {
+            var movies = await _context.Movies.FindAsync( id );
             movies.IsDeleted = true;
             _context.Update( movies );
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction( nameof( Index ) );
         }
 
         private bool MoviesExists(Guid id)
         {
             return _context.Movies.Any(e => e.Id == id);
         }
+
     }
 }
