@@ -1,0 +1,100 @@
+﻿@model Admin.Models.Movies
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h4>Movie Detail</h4>
+<hr />
+
+<div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="Title" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <input asp-for="Title" class="form-control" readonly/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="Image" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <div class="position-relative">
+                <input id="file" class="form-control" readonly>
+                <input type="hidden" asp-for="Image" id="data-img"/>
+                <div class="upload-img">
+                    <img src="@Model.Image" id="display-img" class="m-3 img-100"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="Description" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <textarea asp-for="Description" class="form-control" readonly></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="ReleasedDateTime" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <input asp-for="ReleasedDateTime" class="form-control" type="datetime-local" readonly/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="Genre" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <input asp-for="Genre" class="form-control" readonly/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="Price" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <input asp-for="Price" class="form-control" readonly/>
+        </div>
+    </div>
+    <div class="form-group text-end">
+        <button type="button" class="btn btn-outline-secondary" onclick="location.href='@Url.Action("Index", "Movies" )'">
+            Back
+        </button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Movies", new { id = @Model?.Id })'">
+            Edit
+        </button>
+    </div>
+</div>
+
+ <style>
+    .img-100{
+        width:100px; 
+        height: 100px; 
+        object-fit: cover;
+    }
+
+    .upload-img{
+        position: absolute;
+        top: 10px;
+        left: 0;
+    }
+
+    input#file {
+      width: 100%;
+      padding: 140px 0 0 0;
+      height: 100px;
+      overflow: hidden;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      background: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698394-icon-130-cloud-upload-512.png') center center no-repeat #e4e4e4;
+      border-radius: 20px;
+      background-size: 60px 60px;
+    }
+</style>

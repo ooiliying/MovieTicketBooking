@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieTicketBooking", "MovieTicketBooking\MovieTicketBooking.csproj", "{0BEB4DAF-75B9-47E7-8462-488F5756951C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Admin\Admin.csproj", "{A05F54A5-A06D-4597-B732-6CBA568EA7C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd", "FrontEnd\FrontEnd.csproj", "{3432FD74-7E23-49A8-AF35-5CCFA0E61A44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0BEB4DAF-75B9-47E7-8462-488F5756951C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BEB4DAF-75B9-47E7-8462-488F5756951C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0BEB4DAF-75B9-47E7-8462-488F5756951C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BEB4DAF-75B9-47E7-8462-488F5756951C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05F54A5-A06D-4597-B732-6CBA568EA7C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05F54A5-A06D-4597-B732-6CBA568EA7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05F54A5-A06D-4597-B732-6CBA568EA7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05F54A5-A06D-4597-B732-6CBA568EA7C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3432FD74-7E23-49A8-AF35-5CCFA0E61A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3432FD74-7E23-49A8-AF35-5CCFA0E61A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3432FD74-7E23-49A8-AF35-5CCFA0E61A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3432FD74-7E23-49A8-AF35-5CCFA0E61A44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

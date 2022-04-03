@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "MovieTicketBooking": {
+    "FrontEnd": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

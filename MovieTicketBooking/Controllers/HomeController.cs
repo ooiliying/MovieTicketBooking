@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MovieTicketBooking.Models;
+using FrontEnd.Models;
 using System.Diagnostics;
 
-namespace MovieTicketBooking.Controllers {
+namespace FrontEnd.Controllers {
     public class HomeController : Controller {
         private readonly ILogger<HomeController> _logger;
 

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Admin.Models.Movies>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<h1>Movies</h1>
+
+@using (Html.BeginForm())
+{
+    <div class="row w-50">
+        <div class="col-12">
+            @Html.TextBox("SearchString", null, new { @class= "form-control input-search"})
+            <button type="submit" class="btn btn-secondary search-icon">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleasedDateTime)
+            </th>
+            <th class="text-end">
+                <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "Movies")'">
+                    <i class="fa fa-plus"></i> New
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td><td>
+            @Html.DisplayFor(modelItem => item.ReleasedDateTime)
+        </td>
+        <td style="width:30%" class="text-end">
+            <button class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Movies", new { id = item.Id })'">
+                <i class="fa-solid fa-list"></i> Details
+            </button>
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Movies", new { id = item.Id })'">
+                <i class="fa fa-trash"></i> Delete
+            </button>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+
+<style>
+    .input-search {
+        display: inline;
+        width: 500px;
+    }
+
+    .search-icon {
+        margin-left: -47px;
+        margin-top: -5px;
+    }
+</style>

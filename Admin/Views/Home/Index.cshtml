@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<div class="row" style="height:100px">
+    <div class="col-6">
+        <button class="btn btn-outline-dark w-100 h-100" onclick="location.href='@Url.Action("Index", "Movies")'">
+            Movie
+        </button>
+    </div>
+    <div class="col-6">
+        <button class="btn btn-outline-dark w-100 h-100" onclick="location.href='@Url.Action("Index", "Sales")'">
+            Sale
+        </button>
+    </div>
+</div>
