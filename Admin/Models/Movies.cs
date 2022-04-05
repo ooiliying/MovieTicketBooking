@@ -14,13 +14,16 @@ namespace Admin.Models
         public Guid Id { get; set; }
         [Required]
         public string Title { get; set; }
-        [Required]
-        public string Image { get; set; }
-        [Required]
+        public string PortraitImage { get; set; }
+        public string LandscapeImage { get; set; }
         public string Description { get; set; }
         public DateTimeOffset? ReleasedDateTime { get; set; }
         [StringLength(50)]
         public string Genre { get; set; }
+        [StringLength(50)]
+        public string Duration { get; set; }
+        [StringLength(50)]
+        public string Language { get; set; }
         [Column(TypeName = "money")]
         public decimal? Price { get; set; }
         public bool? IsDeleted { get; set; }

@@ -14,5 +14,19 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+.carousel-caption {
+    bottom: 0 !important;
+    padding-top: 2.25rem !important;
+    padding-bottom: 2.25rem !important;
+    text-align: left !important;
+    font-size: 20px !important;
+}
+
+.space{
+    height:50px;
 }

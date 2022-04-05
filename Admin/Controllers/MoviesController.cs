@@ -19,8 +19,6 @@ namespace Admin.Controllers
             _context = context;
         }
 
-        public string DataImage { get; set; }
-
         // GET: Movies
         public async Task<IActionResult> Index( string searchString ) {
             var movie = _context.Movies
@@ -63,7 +61,7 @@ namespace Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Image,Description,ReleasedDateTime,Genre,Price")] Movies movies)
+        public async Task<IActionResult> Create([Bind( "Title,PortraitImage,LandscapeImage,Description,ReleasedDateTime,Genre,Price" )] Movies movies)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +95,7 @@ namespace Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Image,Description,ReleasedDateTime,Genre,Price,CreatedDateTime")] Movies movies )
+        public async Task<IActionResult> Edit(Guid id, [Bind( "Id,Title,PortraitImage,LandscapeImage,Description,ReleasedDateTime,Genre,Price,CreatedDateTime" )] Movies movies )
         {
             if (id != movies.Id)
             {

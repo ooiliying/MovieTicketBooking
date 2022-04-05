@@ -16,18 +16,34 @@
             <input asp-for="Title" class="form-control" readonly/>
         </div>
     </div>
-    <div class="row mb-3">
+@*    <div class="row mb-3">
         <div class="col-3">
-            <label asp-for="Image" class="control-label"></label>
+            <label asp-for="PortraitImage" class="control-label"></label>
         </div>
         <div class="col-9">
             <div class="position-relative">
                 <input id="file" class="form-control" readonly>
-                <input type="hidden" asp-for="Image" id="data-img"/>
+                <input type="hidden" asp-for="PortraitImage" id="data-img"/>
                 <div class="upload-img">
-                    <img src="@Model.Image" id="display-img" class="m-3 img-100"/>
+                    <img src="@Model.PortraitImage" id="display-img" class="m-3 img-100"/>
                 </div>
             </div>
+        </div>
+    </div>*@
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="PortraitImage" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <img src="@Model.PortraitImage" id="portrait-img" class="img-100" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="LandscapeImage" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <img src="@Model.LandscapeImage" id="landscape-img" class="img-200x100" />
         </div>
     </div>
     <div class="row mb-3">
@@ -48,10 +64,26 @@
     </div>
     <div class="row mb-3">
         <div class="col-3">
+            <label asp-for="Duration" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <input asp-for="Duration" class="form-control" readonly/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
             <label asp-for="Genre" class="control-label"></label>
         </div>
         <div class="col-9">
             <input asp-for="Genre" class="form-control" readonly/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="Language" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <input asp-for="Language" class="form-control" readonly/>
         </div>
     </div>
     <div class="row mb-3">
@@ -79,7 +111,13 @@
         object-fit: cover;
     }
 
-    .upload-img{
+    .img-200x100{
+        width:200px; 
+        height: 100px; 
+        object-fit: cover;
+    }
+
+    /*.upload-img{
         position: absolute;
         top: 10px;
         left: 0;
@@ -96,5 +134,5 @@
       background: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698394-icon-130-cloud-upload-512.png') center center no-repeat #e4e4e4;
       border-radius: 20px;
       background-size: 60px 60px;
-    }
+    }*/
 </style>

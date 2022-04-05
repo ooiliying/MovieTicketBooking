@@ -22,24 +22,60 @@
             </div>
         </div>
     </div>
-    <div class="row mb-3">
+    @*<div class="row mb-3">
         <div class="col-3">
-            <label asp-for="Image" class="control-label"></label>
+            <label asp-for="PortraitImage" class="control-label"></label>
         </div>
         <div class="col-9">
             <div class="form-group position-relative">
                 <input id="file" class="form-control" type="file" accept="image/*" onchange="loadFile(event)">
-                <input type="hidden" asp-for="Image" id="data-img"/>
+                <input type="hidden" asp-for="PortraitImage" id="data-img"/>
                 <div id="upload" class="upload-img">
-                    <img src="@Model.Image" id="display-img" class="m-3 img-100"/>
+                    <img src="@Model.PortraitImage" id="display-img" class="m-3 img-100"/>
                     <button type="button" class="p-0 close-btn hide" onclick="removeImage()" id="close">
                         <i class="fa fa-times-circle fa-xl" aria-hidden="true"></i>
                     </button>
                 </div>
-                <span asp-validation-for="Image" class="text-danger"></span>
+                <span asp-validation-for="PortraitImage" class="text-danger"></span>
             </div>
         </div>
-    </div> 
+    </div>*@
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="PortraitImage" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <div class="form-group">
+                <input asp-for="PortraitImage" class="form-control" onchange="onChangePortraitImage(this.value)"/>
+                <span asp-validation-for="PortraitImage" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+        </div>
+        <div class="col-9">
+            <img src="@Model.PortraitImage" id="portrait-img" class="img-100" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="LandscapeImage" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <div class="form-group">
+                <input asp-for="LandscapeImage" class="form-control" onchange="onChangeLandscapeImage(this.value)"/>
+                <span asp-validation-for="LandscapeImage" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+        </div>
+        <div class="col-9">
+            <img src="@Model.LandscapeImage" id="landscape-img" class="img-200x100" />
+        </div>
+    </div>
     <div class="row mb-3">
         <div class="col-3">
             <label asp-for="Description" class="control-label"></label>
@@ -73,6 +109,28 @@
             </div>
         </div>
     </div>
+     <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="Duration" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <div class="form-group">
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+     <div class="row mb-3">
+        <div class="col-3">
+            <label asp-for="Language" class="control-label"></label>
+        </div>
+        <div class="col-9">
+            <div class="form-group">
+                <input asp-for="Language" class="form-control" />
+                <span asp-validation-for="Language" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
     <div class="row mb-3">
         <div class="col-3">
             <label asp-for="Price" class="control-label"></label>
@@ -96,47 +154,56 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     <script>
-        $(document).ready(function() {
-            var output = document.getElementById('display-img');
-            var close = document.getElementById('close');
-            if(output.src == null || output.src === "" ){
-                output.classList.remove("img-100");
-                close.classList.add("hide");
-             }else{
-                 output.classList.add("img-100");
-                 close.classList.remove("hide");
-             }
-        });
+        //$(document).ready(function() {
+        //    var output = document.getElementById('display-img');
+        //    var close = document.getElementById('close');
+        //    if(output.src == null || output.src === "" ){
+        //        output.classList.remove("img-100");
+        //        close.classList.add("hide");
+        //     }else{
+        //         output.classList.add("img-100");
+        //         close.classList.remove("hide");
+        //     }
+        //});
 
-        var loadFile = function(event) {
-            var reader = new FileReader();
-            var dataImage = "";
-            reader.onload = function(){
-                var img = document.getElementById('upload');
-                img.classList.remove("hide");
+        //var loadFile = function(event) {
+        //    var reader = new FileReader();
+        //    var dataImage = "";
+        //    reader.onload = function(){
+        //        var img = document.getElementById('upload');
+        //        img.classList.remove("hide");
 
-                var output = document.getElementById('display-img');
-                output.src = reader.result;
-                output.classList.add("img-100");
+        //        var output = document.getElementById('display-img');
+        //        output.src = reader.result;
+        //        output.classList.add("img-100");
 
-                var close = document.getElementById('close');
-                close.classList.remove("hide");
+        //        var close = document.getElementById('close');
+        //        close.classList.remove("hide");
 
-                document.getElementById("data-img").value = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]); 
+        //        document.getElementById("data-img").value = reader.result;
+        //    };
+        //    reader.readAsDataURL(event.target.files[0]); 
+        //};
+
+        //function removeImage(){
+        //    var output = document.getElementById('display-img');
+        //    output.src = null;
+        //    document.getElementById("data-img").value = null;
+        //    output.classList.remove("img-100");
+
+        //    var img = document.getElementById('upload');
+        //    img.classList.add("hide");
+        //}
+
+        function onChangePortraitImage (img) {
+            var output = document.getElementById('portrait-img');
+            output.src = img; 
         };
 
-        function removeImage(){
-            var output = document.getElementById('display-img');
-            output.src = null;
-            document.getElementById("data-img").value = null;
-            output.classList.remove("img-100");
-
-            var img = document.getElementById('upload');
-            img.classList.add("hide");
-        }
-
+        function onChangeLandscapeImage (img) {
+            var output = document.getElementById('landscape-img');
+            output.src = img; 
+        };
     </script>
 }
 
@@ -147,7 +214,13 @@
         object-fit: cover;
     }
 
-    .upload-img{
+    .img-200x100{
+        width:200px; 
+        height: 100px; 
+        object-fit: cover;
+    }
+
+    /*.upload-img{
         position: absolute;
         top: 10px;
         left: 0;
@@ -175,5 +248,5 @@
 
     .hide{
         display:none;
-    }
+    }*/
 </style>

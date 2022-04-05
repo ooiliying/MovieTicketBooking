@@ -1,8 +1,72 @@
-﻿@{
+﻿@using FrontEnd.ViewModels
+@model HomeViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@await Component.InvokeAsync("HomeCarousel")
+
+<div class="space"></div>
+
+<div class="container">
+    <h1>LATEST</h1>
+    <div class="owl-carousel">
+        @foreach (var item in Model.LatestMovies) {
+            <div class="item"> 
+                <img src="@item.PortraitImage" alt="@item.Title"/>
+            </div>
+        }
+    </div>
+
+    <div class="space"></div>
+
+    <h1>POPULAR</h1>
+    <div class="owl-carousel">
+        @foreach (var item in Model.PopularMovies) {
+            <div class="item"> 
+                <img src="@item.PortraitImage" alt="@item.Title" />
+            </div>
+        }
+    </div>
 </div>
+
+<div class="space"></div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function() {
+            $(".owl-carousel").owlCarousel({
+                autoPlay: 3000,
+                items : 4,
+                center: true,
+                nav:true,
+                loop:false,
+                responsive: {
+                    600: {items: 4}
+                }
+            });
+        });
+    </script>
+}
+
+<style>
+     .owl-carousel .item {
+         margin: 3px
+     }
+
+     .owl-carousel .item img {
+         display: block;
+         width: 100%;
+         height: 400px;
+         object-fit: cover;
+     }
+
+     .owl-carousel .item {
+         margin: 3px
+     }
+
+     .owl-carousel {
+         margin-bottom: 15px
+     }
+</style>
