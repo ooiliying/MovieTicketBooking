@@ -13,8 +13,10 @@
     <h1>LATEST</h1>
     <div class="owl-carousel">
         @foreach (var item in Model.LatestMovies) {
-            <div class="item"> 
-                <img src="@item.PortraitImage" alt="@item.Title"/>
+            <div class="item grow"> 
+               <a href="@Url.Action("Details", "Movies", new { id = item.Id })">
+                     <img src="@item.PortraitImage" alt="@item.Title"/>
+                </a>
             </div>
         }
     </div>
@@ -24,11 +26,29 @@
     <h1>POPULAR</h1>
     <div class="owl-carousel">
         @foreach (var item in Model.PopularMovies) {
-            <div class="item"> 
-                <img src="@item.PortraitImage" alt="@item.Title" />
+            <div class="item grow"> 
+                <a href="@Url.Action("Details", "Movies", new { id = item.Id })">
+                        <img src="@item.PortraitImage" alt="@item.Title"/>
+                </a>
             </div>
         }
     </div>
+
+    <div class="space"></div>
+
+    <div class="wrapper">
+        <img src="https://cdn.onebauer.media/one/media/5ef0/99b0/f4ad/c9cb/7c33/51a8/cinema-screening.jpg?format=jpg&quality=80&width=1400&ratio=16-9&resize=aspectfill" alt="Card image cap" style="height: 70vh; width: 100%; object-fit:cover">
+        <div class="quote">
+            <div style="padding: 213px 0">
+                <h4>Look For More?</h4>
+                <h6>Enjoy more movie from us!</h6>
+                <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Movies")'">
+                    More Movies
+                </button>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div class="space"></div>
@@ -69,4 +89,36 @@
      .owl-carousel {
          margin-bottom: 15px
      }
+
+     .grow {
+         transition: all .2s ease-in-out;
+     }
+
+    .grow:hover {
+        transform: scale(1.1);
+        filter: brightness(50%);
+        cursor:pointer;
+    }
+
+    .wrapper {
+      position: relative;
+    }
+
+    .wrapper img {
+      filter:brightness(50%);
+    }
+
+    .wrapper .quote {
+        position: absolute;
+        top: 50%;
+        transform: translate(0%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        right: 0;
+        height: 100%;
+        width: 30%;
+    }
 </style>

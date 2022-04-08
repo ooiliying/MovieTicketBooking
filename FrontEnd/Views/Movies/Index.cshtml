@@ -1,0 +1,41 @@
+﻿@using FrontEnd.ViewModels
+@model IEnumerable<FrontEnd.Models.Movies>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+ <div class="container pt-3">
+    <h3 class="h3">Movies</h3>
+    <div class="row m-0">
+        @{Movies last = Model.Last();}
+        @foreach (var item in Model)
+        {
+            <div class="col-3 py-3 px-0">
+                <a href="@Url.Action("Details", "Movies", new { id = item.Id })">
+                     <img src="@item.PortraitImage" alt="@item.Title" style="width:200px; height: 250px; object-fit:cover"/>
+                </a>
+            </div>
+            <div class="col-9 py-3 px-0">
+                <h4>@item.Title</h4>
+                <p class="description">
+                    @item.Description
+                </p>
+            </div>
+            @if (!item.Equals(last)) 
+            {
+                <hr class="m-1"/>
+            }
+        }
+    </div>
+</div>
+
+<style>
+    .description{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-align: justify;
+    }
+</style>
