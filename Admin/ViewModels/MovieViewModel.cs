@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Admin.ViewModels
 {
-    public partial class MovieViewModels
+    public partial class MovieViewModel
     {
         [Key]
         public Guid Id { get; set; }

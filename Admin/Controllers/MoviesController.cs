@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Admin.Models;
 using Admin.ViewModels;
 using AutoMapper;
-using static Admin.ViewModels.MovieViewModels;
+using static Admin.ViewModels.MovieViewModel;
 
 namespace Admin.Controllers
 {
@@ -48,7 +48,7 @@ namespace Admin.Controllers
             var m = await _context.Movies
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            var movies = _mapper.Map<MovieViewModels>(m);
+            var movies = _mapper.Map<MovieViewModel>(m);
 
             if (movies == null)
             {

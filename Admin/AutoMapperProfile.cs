@@ -5,8 +5,8 @@ using AutoMapper;
 namespace Admin {
     public class AutoMapperProfile : Profile{
         public AutoMapperProfile() {
-            CreateMap<MovieViewModels, Movies>().ReverseMap();
-            CreateMap<MovieViewModels.ReleasedDateTime, ReleasedDateTimes>().ReverseMap();
+            CreateMap<MovieViewModel, Movies>().ReverseMap();
+            CreateMap<MovieViewModel.ReleasedDateTime, ReleasedDateTimes>().ReverseMap();
         }
     }
 }

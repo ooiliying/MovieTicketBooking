@@ -2,7 +2,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using static Admin.ViewModels.MovieViewModels;
+using static Admin.ViewModels.MovieViewModel;
 
 namespace FrontEnd.ViewComponents {
     [ViewComponent( Name = "EditReleasedDateTimeTable" )]
