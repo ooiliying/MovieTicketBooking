@@ -5,8 +5,9 @@
 
 <table id="tblReleasedDateTime" class="table table-striped" cellpadding="0" cellspacing="0">
     <tr>
-        <th style="width:100px">Date</th>
+        <th style="width:150px">Date</th>
         <th style="width:150px">Time</th>
+        <th style="width:150px">RoomNo</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -22,6 +23,9 @@
             </td>
             <td class="Time">
                 <span>@item.Time</span>
+            </td>
+            <td class="RoomNo">
+                <span>@item.RoomNo</span>
             </td>
         </tr>
     }

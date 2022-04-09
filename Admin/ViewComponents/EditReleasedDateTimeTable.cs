@@ -17,7 +17,7 @@ namespace FrontEnd.ViewComponents {
 
         public async Task<IViewComponentResult> InvokeAsync(Guid id) {
             Guid movieId = id;
-            var db_releasedDateTime = await _context.ReleasedDateTimes.Where( o => o.MovieId == movieId ).ToListAsync();
+            var db_releasedDateTime = await _context.ReleasedDateTimes.Where( o => o.MovieId == movieId ).OrderBy( o => o.Date ).ThenBy( o => o.Time ).ToListAsync();
             if ( db_releasedDateTime == null ) {
                 db_releasedDateTime = new List<ReleasedDateTimes>();
             }

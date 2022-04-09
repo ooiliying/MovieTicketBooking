@@ -36,6 +36,8 @@ namespace Admin.ViewModels
             public TimeSpan Time { get; set; }
             [Required]
             public Guid MovieId { get; set; }
+            [Required]
+            public int RoomNo { get; set; }
             public DateTimeOffset CreatedDateTime { get; set; }
             public DateTimeOffset? UpdatedDateTime { get; set; }
         }

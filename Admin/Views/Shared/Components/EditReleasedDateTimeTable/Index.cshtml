@@ -20,6 +20,14 @@
     </div>
 </div>
 <div class="row mb-3">
+    <div class="col-3">
+        <label class="control-label">RoomNo</label>
+    </div>
+    <div class="col-9">
+       <input type="number" id="txtRoomNo"  class="form-control"/>
+    </div>
+</div>
+<div class="row mb-3">
     <div class="col-12 text-end">
         <input type="button" id="btnAdd" value="Add" class="btn btn-primary"/>
     </div>
@@ -27,8 +35,9 @@
 
 <table id="tblReleasedDateTime" class="table table-striped" cellpadding="0" cellspacing="0">
     <tr>
-        <th style="width:100px">Date</th>
+        <th style="width:150px">Date</th>
         <th style="width:150px">Time</th>
+        <th style="width:150px">RoomNo</th>
         <th style="width:150px"></th>
     </tr>
     @foreach (var item in Model)
@@ -47,6 +56,10 @@
             <td class="Time">
                 <span>@item.Time</span>
                 <input type="time" value="@item.Time" style="display:none" class="form-control"/>
+            </td>
+            <td class="RoomNo">
+                <span>@item.RoomNo</span>
+                <input type="time" value="@item.RoomNo" style="display:none" class="form-control"/>
             </td>
             <td class="text-end">
                 <button type="button" class="Edit btn btn-secondary" onclick="location.href=javascript:;">
@@ -80,7 +93,7 @@
             }
         });
  
-        function AppendRow(row, Id, date, time) {
+        function AppendRow(row, Id, date, time, roomNo) {
             $(".Id", row).find("span").html(Id);
             
             //Bind Date.
@@ -90,6 +103,10 @@
             //Bind Time.
             $(".Time", row).find("span").html(time);
             $(".Time", row).find("input").val(time);
+
+            //Bind RoomNo.
+            $(".RoomNo", row).find("span").html(roomNo);
+            $(".RoomNo", row).find("input").val(roomNo);
  
             row.find(".Edit").show();
             row.find(".Delete").show();
@@ -101,19 +118,21 @@
             var movieId = $("#movieId");
             var txtDate = $("#txtDate");
             var txtTime = $("#txtTime");
+            var txtRoomNo = $("#txtRoomNo");
             $.ajax({
                 type: "POST",
                 url: "/ReleasedDateTimes/Create",
-                data: {MovieId: movieId.val(), Date: txtDate.val(), Time: txtTime.val() },
+                data: {MovieId: movieId.val(), Date: txtDate.val(), Time: txtTime.val(), RoomNo: txtRoomNo.val() },
                 success: function (r) {
                     var row = $("#tblReleasedDateTime tr:last-child");
                     if ($("#tblReleasedDateTime tr:last-child span").eq(0).html() != "&nbsp;") {
                         row = row.clone();
                         console.log("clone");
                     }
-                    AppendRow(row, r.id, r.date, r.time);
+                    AppendRow(row, r.id, r.date, r.time, r.roomNo);
                     txtDate.val("");
                     txtTime.val("");
+                    txtRoomNo.val("");
                 }
             });
         });
@@ -154,6 +173,7 @@
             releasedDateTimes.Id = row.find(".Id").find("span").html();
             releasedDateTimes.Date = row.find(".Date").find("span").html();
             releasedDateTimes.Time = row.find(".Time").find("span").html();
+            releasedDateTimes.Time = row.find(".RoomNo").find("span").html();
             $.ajax({
                 type: "POST",
                 url: "/ReleasedDateTimes/Edit",

@@ -42,6 +42,7 @@ namespace Admin.Controllers
             if ( ModelState.IsValid ) {
                 db_releasedDateTimes.Date = releasedDateTimes.Date;
                 db_releasedDateTimes.Time = releasedDateTimes.Time;
+                db_releasedDateTimes.RoomNo = releasedDateTimes.RoomNo;
                 db_releasedDateTimes.UpdatedDateTime = DateTimeOffset.Now;
                 _context.Update( db_releasedDateTimes );
                 await _context.SaveChangesAsync();
