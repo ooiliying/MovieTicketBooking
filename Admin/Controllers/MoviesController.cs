@@ -91,9 +91,9 @@ namespace Admin.Controllers
             }
 
             var movies = await _context.Movies.FindAsync(id);
-
-              
-
+            if ( movies.Price != null) {
+                movies.Price = Math.Round( (decimal)movies.Price, 2, MidpointRounding.AwayFromZero );
+            }
 
             if (movies == null)
             {
