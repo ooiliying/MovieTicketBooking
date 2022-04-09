@@ -1,90 +1,150 @@
-﻿@model FrontEnd.Models.Movies
+﻿@model FrontEnd.ViewModels.MovieViewModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="wrapper">
+    <img class="d-block w-100" src="@Model.LandscapeImage" alt="LandscapeImage" style="height: 70vh; object-fit:cover;">
+    <div class="black-gradient overlay" style="height: 70vh"></div>
+</div>
 
-<div>
-    <h4>Movies</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PortraitImage)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PortraitImage)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LandscapeImage)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LandscapeImage)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReleasedDateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ReleasedDateTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Language)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Language)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDateTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedDateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedDateTime)
-        </dd>
-    </dl>
+<div class="space"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <img class="d-block w-100" src="@Model.PortraitImage" alt="PortraitImage" style="height: 50vh; object-fit:cover;">
+        </div>
+        <div class="col-9">
+            <h3>@Model.Title</h3>
+            <p class="text-justify">
+                @Model.Description<br /><br />
+                @if (Model.Genre != null) {
+                   <p class="mb-0">Genre: <b>@Model.Genre</b></p> 
+                }
+                @if (Model.Duration != null) {
+                   <p class="mb-0">Duration: <b>@Model.Duration</b></p> 
+                }
+                @if (Model.Language != null) {
+                   <p class="mb-0">Language: <b>@Model.Language</b></p> 
+                }
+                @if (Model.Price != null) {
+                   <p class="mb-0">Price: <b>RM @(String.Format("{0:0.##}", @Model.Price))</b></p> 
+                }
+            </p>
+        </div>
+    </div>
+
+    <div class="space"></div>
+
+    <h4>Book Now</h4>
+    @{var today = DateTime.Today;}
+    <ul class="nav nav-pills nav-justified">
+        <li class="nav-item">
+            <a href="#day-1" class="nav-link active" data-bs-toggle="tab">@today.ToString("dd MMMM")</a>
+        </li>
+        <li class="nav-item">
+            <a href="#day-2" class="nav-link" data-bs-toggle="tab">@today.AddDays(1).ToString("dd MMMM")</a>
+        </li>
+        <li class="nav-item">
+            <a href="#day-3" class="nav-link" data-bs-toggle="tab">@today.AddDays(2).ToString("dd MMMM")</a>
+        </li>
+        <li class="nav-item">
+            <a href="#day-4" class="nav-link" data-bs-toggle="tab">@today.AddDays(3).ToString("dd MMMM")</a>
+        </li>
+        <li class="nav-item">
+            <a href="#day-5" class="nav-link" data-bs-toggle="tab">@today.AddDays(4).ToString("dd MMMM")</a>
+        </li>
+        <li class="nav-item">
+            <a href="#day-6" class="nav-link" data-bs-toggle="tab">@today.AddDays(5).ToString("dd MMMM")</a>
+        </li>
+        <li class="nav-item">
+            <a href="#day-7" class="nav-link" data-bs-toggle="tab">@today.AddDays(6).ToString("dd MMMM")</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="day-1">
+            @foreach ( var rdt in Model.ReleasedDateTimesDay1) 
+            {
+                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
+                    @rdt.Time.ToString(@"hh\:mm")
+                </buton>
+            }
+        </div>
+        <div class="tab-pane fade" id="day-2">
+            @foreach ( var rdt in Model.ReleasedDateTimesDay2) 
+            {
+                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
+                    @rdt.Time.ToString(@"hh\:mm")
+                </buton>
+            }
+        </div>
+        <div class="tab-pane fade" id="day-3">
+            @foreach ( var rdt in Model.ReleasedDateTimesDay3) 
+            {
+                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
+                    @rdt.Time.ToString(@"hh\:mm")
+                </buton>
+            }
+        </div>
+        <div class="tab-pane fade show" id="day-4">
+            @foreach ( var rdt in Model.ReleasedDateTimesDay4) 
+            {
+                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
+                    @rdt.Time.ToString(@"hh\:mm")
+                </buton>
+            }
+        </div>
+        <div class="tab-pane fade" id="day-5">
+            @foreach ( var rdt in Model.ReleasedDateTimesDay5) 
+            {
+                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
+                    @rdt.Time.ToString(@"hh\:mm")
+                </buton>
+            }
+        </div>
+        <div class="tab-pane fade" id="day-6">
+            @foreach ( var rdt in Model.ReleasedDateTimesDay6) 
+            {
+                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
+                    @rdt.Time.ToString(@"hh\:mm")
+                </buton>
+            }
+        </div>
+        <div class="tab-pane fade" id="day-7">
+            @foreach ( var rdt in Model.ReleasedDateTimesDay7) 
+            {
+                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
+                    @rdt.Time.ToString(@"hh\:mm")
+                </buton>
+            }
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<div class="space"></div>
+
+<style>
+    .wrapper {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 70vh;
+    }
+
+    .black-gradient {
+        background: linear-gradient(to bottom, transparent 0%, black 260%);
+    }
+
+    .overlay {
+        position: absolute;
+        align-items: center;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        width: 100%;
+    }
+</style>

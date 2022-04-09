@@ -1,3 +1,4 @@
+using FrontEnd;
 using FrontEnd.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>( options => options.SignIn.RequireConfirmedAccount = true )
     .AddEntityFrameworkStores<MovieTicketBookingContext>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddAutoMapper( typeof( AutoMapperProfile ).Assembly );
 
 var app = builder.Build();
 

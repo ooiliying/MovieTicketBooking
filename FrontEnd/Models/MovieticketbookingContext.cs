@@ -20,12 +20,18 @@ namespace FrontEnd.Models
         }
 
         public virtual DbSet<Movies> Movies { get; set; }
+        public virtual DbSet<ReleasedDateTimes> ReleasedDateTimes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<Movies>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<ReleasedDateTimes>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
             });

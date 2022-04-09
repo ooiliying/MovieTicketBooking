@@ -1,5 +1,5 @@
 ﻿@using FrontEnd.ViewModels
-@model IEnumerable<FrontEnd.Models.Movies>
+@model IEnumerable<FrontEnd.ViewModels.MovieViewModel>
 
 @{
     ViewData["Title"] = "Movies";
@@ -7,8 +7,21 @@
 
  <div class="container pt-3">
     <h3 class="h3">Movies</h3>
+
+    @using (Html.BeginForm())
+    {
+        <div class="row text-end">
+            <div class="col-12">
+                @Html.TextBox("SearchString", null, new { @class= "form-control input-search"})
+                <button type="submit" class="btn btn-secondary search-icon">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    }
+
     <div class="row m-0">
-        @{Movies last = Model.Last();}
+        @{MovieViewModel last = Model.Last();}
         @foreach (var item in Model)
         {
             <div class="col-3 py-3 px-0">
@@ -21,6 +34,16 @@
                 <p class="description">
                     @item.Description
                 </p>
+                @if(item.ReleasedDateTimes != null){
+                    <br />
+                    <h6>Today</h6>
+                    @foreach (var rdt in item.ReleasedDateTimes) 
+                    {
+                        <buton type="button" class="btn btn-danger mr-3">
+                            <h5 class="mb-0">@rdt.Time.ToString(@"hh\:mm")</h5>
+                        </buton>
+                    }
+                }
             </div>
             @if (!item.Equals(last)) 
             {
@@ -37,5 +60,15 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-align: justify;
+    }
+
+    .input-search {
+        display: inline;
+        width: 500px;
+    }
+
+    .search-icon {
+        margin-left: -46px;
+        margin-top: -5px;
     }
 </style>

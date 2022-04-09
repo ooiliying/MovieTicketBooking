@@ -30,3 +30,12 @@ body {
 .space{
     height:50px;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+.nav-link {
+    color: #dc3545 !important;
+}

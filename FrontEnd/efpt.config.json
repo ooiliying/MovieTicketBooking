@@ -16,6 +16,10 @@
       {
          "Name": "[dbo].[Movies]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReleasedDateTimes]",
+         "ObjectType": 0
       }
    ],
    "UiHint": "(localdb)\\LocalDBDemo.MovieTicketBooking",
