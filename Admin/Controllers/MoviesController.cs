@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Admin.Models;
+using Admin.ViewModels;
+using AutoMapper;
+using static Admin.ViewModels.MovieViewModels;
 
 namespace Admin.Controllers
 {
     public class MoviesController : Controller
     {
         private readonly MovieTicketBookingContext _context;
+        private readonly IMapper _mapper;
 
-        public MoviesController(MovieTicketBookingContext context)
+        public MoviesController(MovieTicketBookingContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: Movies
@@ -40,8 +45,11 @@ namespace Admin.Controllers
                 return NotFound();
             }
 
-            var movies = await _context.Movies
+            var m = await _context.Movies
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+            var movies = _mapper.Map<MovieViewModels>(m);
+
             if (movies == null)
             {
                 return NotFound();
@@ -61,7 +69,7 @@ namespace Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind( "Title,PortraitImage,LandscapeImage,Description,ReleasedDateTime,Genre,Price" )] Movies movies)
+        public async Task<IActionResult> Create([Bind( "Title,PortraitImage,LandscapeImage,Description,Genre,Price" )] Movies movies)
         {
             if (ModelState.IsValid)
             {
@@ -83,6 +91,10 @@ namespace Admin.Controllers
             }
 
             var movies = await _context.Movies.FindAsync(id);
+
+              
+
+
             if (movies == null)
             {
                 return NotFound();
@@ -95,7 +107,7 @@ namespace Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind( "Id,Title,PortraitImage,LandscapeImage,Description,ReleasedDateTime,Genre,Price,CreatedDateTime" )] Movies movies )
+        public async Task<IActionResult> Edit(Guid id, [Bind( "Id,Title,PortraitImage,LandscapeImage,Description,Genre,Price,CreatedDateTime" )] Movies movies )
         {
             if (id != movies.Id)
             {
@@ -159,6 +171,5 @@ namespace Admin.Controllers
         {
             return _context.Movies.Any(e => e.Id == id);
         }
-
     }
 }

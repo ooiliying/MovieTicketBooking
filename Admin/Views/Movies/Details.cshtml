@@ -1,4 +1,4 @@
-﻿@model Admin.Models.Movies
+﻿@model Admin.ViewModels.MovieViewModels
 
 @{
     ViewData["Title"] = "Details";
@@ -56,14 +56,6 @@
     </div>
     <div class="row mb-3">
         <div class="col-3">
-            <label asp-for="ReleasedDateTime" class="control-label"></label>
-        </div>
-        <div class="col-9">
-            <input asp-for="ReleasedDateTime" class="form-control" type="datetime-local" readonly/>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-3">
             <label asp-for="Duration" class="control-label"></label>
         </div>
         <div class="col-9">
@@ -94,6 +86,8 @@
             <input asp-for="Price" class="form-control" readonly/>
         </div>
     </div>
+    <hr />
+    @await Component.InvokeAsync("DetailReleasedDateTimeTable", new { id = Model.Id })
     <div class="form-group text-end">
         <button type="button" class="btn btn-outline-secondary" onclick="location.href='@Url.Action("Index", "Movies" )'">
             Back
@@ -103,6 +97,7 @@
         </button>
     </div>
 </div>
+
 
  <style>
     .img-100{
