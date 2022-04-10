@@ -8,17 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FrontEnd.Models
 {
-    public partial class ReleasedDateTimes
+    public partial class Seats
     {
         [Key]
         public Guid Id { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string Date { get; set; }
-        public TimeSpan Time { get; set; }
-        public Guid MovieId { get; set; }
         public int RoomNo { get; set; }
-        public DateTimeOffset CreatedDateTime { get; set; }
-        public DateTimeOffset? UpdatedDateTime { get; set; }
+        [Required]
+        public string SeatStr { get; set; }
     }
 }

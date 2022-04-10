@@ -25,6 +25,8 @@ namespace FrontEnd.ViewModels {
             public Guid Id { get; set; }
             public string Date { get; set; }
             public TimeSpan Time { get; set; }
+            public Guid RoomId { get; set; }
+            public int RoomNo { get; set; }
         }
     }
 }

@@ -61,8 +61,10 @@ namespace FrontEnd.Controllers
 					select * from Movies m 
 					cross apply(
 						select ReleasedDateTimesDay1 = JSON_QUERY((
-						select Id, Date, Time from ReleasedDateTimes rdt
-						where m.Id = rdt.MovieId 
+						select rdt.Id, rdt.Date, rdt.Time, s.Id as RoomId, rdt.RoomNo from ReleasedDateTimes rdt
+						inner join Seats s
+						on rdt.RoomNo = s.RoomNo
+						where m.Id = rdt.MovieId
 						and rdt.Date =  convert(date, getdate()) -- get today date
 						order by rdt.Date, rdt.Time asc
 						for json path
@@ -70,8 +72,10 @@ namespace FrontEnd.Controllers
 					)d1
 					cross apply(
 						select ReleasedDateTimesDay2 = JSON_QUERY((
-						select Id, Date, Time from ReleasedDateTimes rdt
-						where m.Id = rdt.MovieId 
+						select rdt.Id, rdt.Date, rdt.Time, s.Id as RoomId, rdt.RoomNo from ReleasedDateTimes rdt
+						inner join Seats s
+						on rdt.RoomNo = s.RoomNo
+						where m.Id = rdt.MovieId
 						and rdt.Date =  convert(date, getdate()+1)
 						order by rdt.Date, rdt.Time asc
 						for json path
@@ -79,7 +83,9 @@ namespace FrontEnd.Controllers
 					)d2
 					cross apply(
 						select ReleasedDateTimesDay3 = JSON_QUERY((
-						select Id, Date, Time from ReleasedDateTimes rdt
+						select rdt.Id, rdt.Date, rdt.Time, s.Id as RoomId, rdt.RoomNo from ReleasedDateTimes rdt
+						inner join Seats s
+						on rdt.RoomNo = s.RoomNo
 						where m.Id = rdt.MovieId 
 						and rdt.Date =  convert(date, getdate()+2)
 						order by rdt.Date, rdt.Time asc
@@ -88,8 +94,10 @@ namespace FrontEnd.Controllers
 					)d3
 					cross apply(
 						select ReleasedDateTimesDay4 = JSON_QUERY((
-						select Id, Date, Time from ReleasedDateTimes rdt
-						where m.Id = rdt.MovieId 
+						select rdt.Id, rdt.Date, rdt.Time, s.Id as RoomId, rdt.RoomNo from ReleasedDateTimes rdt
+						inner join Seats s
+						on rdt.RoomNo = s.RoomNo
+						where m.Id = rdt.MovieId
 						and rdt.Date =  convert(date, getdate()+3)
 						order by rdt.Date, rdt.Time asc
 						for json path
@@ -97,8 +105,10 @@ namespace FrontEnd.Controllers
 					)d4
 					cross apply(
 						select ReleasedDateTimesDay5 = JSON_QUERY((
-						select Id, Date, Time from ReleasedDateTimes rdt
-						where m.Id = rdt.MovieId 
+						select rdt.Id, rdt.Date, rdt.Time, s.Id as RoomId, rdt.RoomNo from ReleasedDateTimes rdt
+						inner join Seats s
+						on rdt.RoomNo = s.RoomNo
+						where m.Id = rdt.MovieId
 						and rdt.Date =  convert(date, getdate()+4)
 						order by rdt.Date, rdt.Time asc
 						for json path
@@ -106,8 +116,10 @@ namespace FrontEnd.Controllers
 					)d5
 					cross apply(
 						select ReleasedDateTimesDay6 = JSON_QUERY((
-						select Id, Date, Time from ReleasedDateTimes rdt
-						where m.Id = rdt.MovieId 
+						select rdt.Id, rdt.Date, rdt.Time, s.Id as RoomId, rdt.RoomNo from ReleasedDateTimes rdt
+						inner join Seats s
+						on rdt.RoomNo = s.RoomNo
+						where m.Id = rdt.MovieId
 						and rdt.Date =  convert(date, getdate()+5)
 						order by rdt.Date, rdt.Time asc
 						for json path
@@ -115,8 +127,10 @@ namespace FrontEnd.Controllers
 					)d6
 					cross apply(
 						select ReleasedDateTimesDay7 = JSON_QUERY((
-						select Id, Date, Time from ReleasedDateTimes rdt
-						where m.Id = rdt.MovieId 
+						select rdt.Id, rdt.Date, rdt.Time, s.Id as RoomId, rdt.RoomNo from ReleasedDateTimes rdt
+						inner join Seats s
+						on rdt.RoomNo = s.RoomNo
+						where m.Id = rdt.MovieId
 						and rdt.Date =  convert(date, getdate()+6)
 						order by rdt.Date, rdt.Time asc
 						for json path

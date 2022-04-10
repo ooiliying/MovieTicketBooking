@@ -1,0 +1,73 @@
+﻿@model FrontEnd.ViewModels.SeatViewModel
+
+@{
+    ViewData["Title"] = "Seats";
+}
+<div class="space"></div>
+
+<div class="container">
+    <h3 class="text-center">Book Your Ticket</h3>
+    <div class="screen"></div>
+    <p class="text-center">Screen</p>
+    <div class="space"></div>
+
+    <div class="row">
+        @foreach (var item in Model.Seats) {
+            var id = $"btn-check-{item}";
+            <div class="col-xs-1-10">
+                <input type="checkbox" class="btn-check" id="@id" autocomplete="off" value="@item">
+                <label class="btn btn-danger seat" for="@id">@item</label>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col text-end">
+            <buton type="button" class="btn btn-light mt-4">
+                Proceed
+            </buton>
+        </div>
+    </div>
+    
+</div>
+
+<div class="space"></div>
+
+@section Scripts{
+    <script>
+          $(':checkbox').click(function() {
+            var checkedArr = $(':checkbox:checked').map(function() {
+              return this.value;
+            }).get();
+            console.log(checkedArr.toString());
+        })
+    </script>
+}
+
+<style>
+    .screen{
+        height: 15px;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 15px 18px 2px grey;
+    }
+
+    .seat{
+        width: 50px;
+        border: 1px solid white;
+        margin: 5px;
+    }
+
+    .col-xs-1-10 {
+        position: relative;
+        min-height: 1px;
+        width: 10%;
+        float: left;
+        text-align: center;
+    }
+
+    .btn-check:checked+.btn-danger {
+        background-color: #28a745;
+        border: 1px solid white;
+        box-shadow:none;
+    }
+</style>

@@ -65,59 +65,87 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade show active" id="day-1">
-            @foreach ( var rdt in Model.ReleasedDateTimesDay1) 
-            {
-                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
-                    @rdt.Time.ToString(@"hh\:mm")
-                </buton>
+            @if(Model.ReleasedDateTimesDay1 != null){
+                @foreach ( var rdt in Model.ReleasedDateTimesDay1) 
+                {
+                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Seats", new { Id = rdt.RoomId })'">
+                        @rdt.Time.ToString(@"hh\:mm")
+                    </buton>
+                }
+            }else{
+                <p>Not available</p>
             }
         </div>
         <div class="tab-pane fade" id="day-2">
-            @foreach ( var rdt in Model.ReleasedDateTimesDay2) 
-            {
-                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
-                    @rdt.Time.ToString(@"hh\:mm")
-                </buton>
+            @if(Model.ReleasedDateTimesDay1 != null){
+                @foreach ( var rdt in Model.ReleasedDateTimesDay2) 
+                {
+                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Seats", new { Id = rdt.RoomId })'">
+                        @rdt.Time.ToString(@"hh\:mm")
+                    </buton>
+                }
+            }else{
+                <p>Not available</p>
             }
         </div>
         <div class="tab-pane fade" id="day-3">
-            @foreach ( var rdt in Model.ReleasedDateTimesDay3) 
-            {
-                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
-                    @rdt.Time.ToString(@"hh\:mm")
-                </buton>
+            @if(Model.ReleasedDateTimesDay1 != null){
+                @foreach ( var rdt in Model.ReleasedDateTimesDay3) 
+                {
+                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Seats", new { Id = rdt.RoomId })'">
+                        @rdt.Time.ToString(@"hh\:mm")
+                    </buton>
+                }
+            }else{
+                <p>Not available</p>
             }
         </div>
         <div class="tab-pane fade show" id="day-4">
-            @foreach ( var rdt in Model.ReleasedDateTimesDay4) 
-            {
-                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
-                    @rdt.Time.ToString(@"hh\:mm")
-                </buton>
+            @if(Model.ReleasedDateTimesDay1 != null){
+                @foreach ( var rdt in Model.ReleasedDateTimesDay4) 
+                {
+                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Seats", new { Id = rdt.RoomId })'">
+                        @rdt.Time.ToString(@"hh\:mm")
+                    </buton>
+                }
+            }else{
+                <p>Not available</p>
             }
         </div>
         <div class="tab-pane fade" id="day-5">
-            @foreach ( var rdt in Model.ReleasedDateTimesDay5) 
-            {
-                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
-                    @rdt.Time.ToString(@"hh\:mm")
-                </buton>
+            @if(Model.ReleasedDateTimesDay1 != null){
+                @foreach ( var rdt in Model.ReleasedDateTimesDay5) 
+                {
+                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Seats", new { Id = rdt.RoomId })'">
+                        @rdt.Time.ToString(@"hh\:mm")
+                    </buton>
+                }
+            }else{
+                <p>Not available</p>
             }
         </div>
         <div class="tab-pane fade" id="day-6">
-            @foreach ( var rdt in Model.ReleasedDateTimesDay6) 
-            {
-                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
-                    @rdt.Time.ToString(@"hh\:mm")
-                </buton>
+            @if(Model.ReleasedDateTimesDay1 != null){
+                @foreach ( var rdt in Model.ReleasedDateTimesDay6) 
+                {
+                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Seats", new { Id = rdt.RoomId })'">
+                        @rdt.Time.ToString(@"hh\:mm")
+                    </buton>
+                }
+            }else{
+                <p>Not available</p>
             }
         </div>
         <div class="tab-pane fade" id="day-7">
-            @foreach ( var rdt in Model.ReleasedDateTimesDay7) 
-            {
-                <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5">
-                    @rdt.Time.ToString(@"hh\:mm")
-                </buton>
+            @if(Model.ReleasedDateTimesDay1 != null){
+                @foreach ( var rdt in Model.ReleasedDateTimesDay7) 
+                {
+                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Seats", new { Id = rdt.RoomId })'">
+                        @rdt.Time.ToString(@"hh\:mm")
+                    </buton>
+                }
+            }else{
+                <p>Not available</p>
             }
         </div>
     </div>
