@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FrontEnd.Models
 {
-    public partial class BookedTickets
+    public partial class Invoices
     {
         [Key]
         public Guid Id { get; set; }
@@ -18,10 +18,8 @@ namespace FrontEnd.Models
         [StringLength(10)]
         public string BookedSeatStr { get; set; }
         public Guid RoomId { get; set; }
-        [Required]
-        [StringLength(10)]
-        public string TotalAmount { get; set; }
+        [Column(TypeName = "money")]
+        public decimal TotalAmount { get; set; }
         public DateTimeOffset CreatedDateTime { get; set; }
-        public DateTimeOffset? UpdatedDateTime { get; set; }
     }
 }

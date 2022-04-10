@@ -34,7 +34,7 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[BookedTickets]",
+         "Name": "[dbo].[Invoices]",
          "ObjectType": 0
       },
       {

@@ -5,11 +5,11 @@ using FrontEnd.ViewModels;
 namespace FrontEnd {
     public class AutoMapperProfile : Profile{
         public AutoMapperProfile() {
-            //CreateMap<SeatViewModel, Seats>().ReverseMap();
-
             CreateMap<Seats, SeatViewModel>()
                 .ForMember( x => x.Seats, opt => opt.MapFrom( o => getSeats( o.SeatStr ) ) )
                 .ReverseMap();
+
+            CreateMap<InvoiceViewModel, Invoices>().ReverseMap();
         }
 
         private List<string> getSeats( string seats ) {

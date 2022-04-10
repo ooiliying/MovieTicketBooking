@@ -1,0 +1,103 @@
+﻿@using FrontEnd.ViewModels
+@model FrontEnd.ViewModels.InvoiceViewModel
+
+@{
+    ViewData["Title"] = "Invoice";
+}
+
+<input type="hidden" id="roomId" value="@Model.RoomId"/>
+<input type="hidden" id="movieId" value="@Model.MovieId"/>
+<input type="hidden" id="bookedSeat" value="@Model.BookedSeat"/>
+<input type="hidden" id="totalAmount" value="@Model.TotalAmount"/>
+
+<div class="container pt-3" style="padding-left:250px; padding-right:250px">
+    <h3>Invoice</h3>
+    <div class="row">
+        <div class="col">
+            <img src="@Model.MovieImage" alt="@Model.Movie" style="width:200px; height: 250px; object-fit:cover"/>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-6">
+                    Title
+                </div>
+                <div class="col-6">
+                    <b>@Model.Movie</b>
+                </div>
+                <div class="col-6">
+                    Date
+                </div>
+                <div class="col-6">
+                    <b>@Model.Date</b>
+                </div>
+                <div class="col-6">
+                    Time
+                </div>
+                <div class="col-6">
+                    <b>@Model.Time.ToString(@"hh\:mm")</b>
+                </div>
+                <div class="col-6">
+                    Room
+                </div>
+                <div class="col-6">
+                    <b>@Model.RoomNo</b>
+                </div>
+                <div class="col-6">
+                    Seat
+                </div>
+                <div class="col-6">
+                    @foreach ( var item in Model.Seats) {
+                        <buton type="button" class="btn btn-success btn-sm mr-2 mb-2 disabled" style="opacity:1">
+                            @item
+                        </buton>
+                    }
+                </div>
+                <div class="col-6">
+                    Price per Ticket
+                </div>
+                <div class="col-6">
+                    <b>RM @(Math.Round( (decimal)@Model.Price, 2, MidpointRounding.AwayFromZero ))</b>
+                </div>
+                <div class="col-6">
+                    Total Amount
+                </div>
+                <div class="col-6">
+                    <b>RM @(Math.Round( (decimal)@Model.TotalAmount, 2, MidpointRounding.AwayFromZero ))</b>
+                </div>
+                <div class="col">
+                     <buton type="button" class="btn btn-danger mt-4" id="btnConfirm">
+                        Confirm
+                    </buton>
+                </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $("body").on("click", "#btnConfirm", function () {
+            console.log("click");
+            var roomId = $("#roomId").val();
+            var movieId = $("#movieId").val();
+            var totalAmount = $("#totalAmount").val();
+            var bookedSeat = $("#bookedSeat").val();
+
+            var invoices = {};
+            invoices.RoomId = roomId;
+            invoices.MovieId = movieId;
+            invoices.TotalAmount = totalAmount;
+            invoices.BookedSeat = bookedSeat;
+
+            $.ajax({
+                type: "POST",
+                url: "/Invoices/Create",
+                data: {RoomId: roomId, MovieId: movieId, TotalAmount: totalAmount, BookedSeat: bookedSeat },
+                success: function () {
+                        var url = "/Invoices/Create";
+                        window.location = url;
+                    }
+            });
+        });
+    </script>
+}

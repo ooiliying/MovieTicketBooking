@@ -3,6 +3,15 @@
 @{
     ViewData["Title"] = "Seats";
 }
+
+<input type="hidden" id="roomId" value="@Model.Id"/>
+<input type="hidden" id="roomNo" value="@Model.RoomNo"/>
+<input type="hidden" id="movieId" value="@Model.MovieId"/>
+<input type="hidden" id="movie" value="@Model.Movie"/>
+<input type="hidden" id="date" value="@Model.Date"/>
+<input type="hidden" id="time" value="@Model.Time"/>
+<input type="hidden" id="price" value="@Model.Price"/>
+
 <div class="space"></div>
 
 <div class="container">
@@ -14,6 +23,9 @@
     }
     @if (Model.Time != null) {
         <p class="mb-0">Time: @Model.Time.ToString(@"hh\:mm")</p>
+    }
+    @if (Model.Price != null) {
+        <p class="mb-0">Price: RM @(Math.Round( (decimal)@Model.Price, 2, MidpointRounding.AwayFromZero ))</p>
     }
     <br />
     <div class="screen"></div>
@@ -29,9 +41,10 @@
             </div>
         }
     </div>
+    <input type="hidden" id="bookedSeat" />
     <div class="row">
         <div class="col text-end">
-            <buton type="button" class="btn btn-light mt-4">
+            <buton type="button" class="btn btn-light mt-4" id="btnProceed">
                 Proceed
             </buton>
         </div>
@@ -42,13 +55,49 @@
 <div class="space"></div>
 
 @section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
           $(':checkbox').click(function() {
             var checkedArr = $(':checkbox:checked').map(function() {
               return this.value;
             }).get();
-            console.log(checkedArr.toString());
+            $('#bookedSeat').val(checkedArr.toString());
         })
+
+        $("body").on("click", "#btnProceed", function () {
+            console.log("click");
+            var roomId = $("#roomId").val();
+            var roomNo = $("#roomNo").val();
+            var movieId = $("#movieId").val();
+            var movie = $("#movie").val();
+            var date = $("#date").val();
+            var time = $("#time").val();
+            var price = $("#price").val();
+            var bookedSeat = $("#bookedSeat").val();
+
+            var invoices = {};
+            invoices.RoomId = roomId;
+            invoices.RoomNo = roomNo;
+            invoices.MovieId = movieId;
+            invoices.Movie = movie;
+            invoices.Date = date;
+            invoices.Time = time;
+            invoices.Price = price;
+            invoices.BookedSeat = bookedSeat;
+
+            if(invoices.BookedSeat === ""){
+                alert("Please select your seat");
+            }else{
+                $.ajax({
+                    success: function () {
+                        var url = "/Invoices/Index?"+"&RoomId="+invoices.RoomId+"&RoomNo="+invoices.RoomNo+
+                                "&MovieId="+invoices.MovieId+"&Movie="+invoices.Movie+"&Date="+invoices.Date+
+                                "&Time="+invoices.Time+"&Price="+invoices.Price+"&BookedSeat="+invoices.BookedSeat;
+                        window.location = url;
+                    }
+                });
+            }
+        });
     </script>
 }
 

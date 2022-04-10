@@ -23,7 +23,7 @@ namespace FrontEnd.Controllers
         }
 
         // GET: Seats/Details/5
-        public async Task<IActionResult> Details( Guid? id, Guid? movieId, string? date, TimeSpan time ) {
+        public async Task<IActionResult> Details( Guid? id, string? movie, Guid? movieId, string? date, TimeSpan time, string bookSeat, decimal? price ) {
             if ( id == null ) {
                 return NotFound();
             }
@@ -32,9 +32,11 @@ namespace FrontEnd.Controllers
                 .FirstOrDefaultAsync( m => m.Id == id );
 
             var seats = _mapper.Map<SeatViewModel>( s );
+            seats.MovieId = await _context.Movies.Where( m => m.Id == movieId ).Select( o => o.Id ).SingleOrDefaultAsync();
             seats.Movie = await _context.Movies.Where( m => m.Id == movieId ).Select(o => o.Title).SingleOrDefaultAsync();
             seats.Date = date;
             seats.Time = time;
+            seats.Price = price;
 
             if ( seats == null ) {
                 return NotFound();
