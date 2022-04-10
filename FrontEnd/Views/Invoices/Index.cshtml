@@ -10,58 +10,58 @@
 <input type="hidden" id="bookedSeat" value="@Model.BookedSeat"/>
 <input type="hidden" id="totalAmount" value="@Model.TotalAmount"/>
 
-<div class="container pt-3" style="padding-left:250px; padding-right:250px">
+<div class="container pt-3">
     <h3>Invoice</h3>
     <div class="row">
-        <div class="col">
+        <div class="col-3">
             <img src="@Model.MovieImage" alt="@Model.Movie" style="width:200px; height: 250px; object-fit:cover"/>
         </div>
-        <div class="col">
+        <div class="col-9">
             <div class="row">
-                <div class="col-6">
+                <div class="col-2">
                     Title
                 </div>
-                <div class="col-6">
+                <div class="col-10">
                     <b>@Model.Movie</b>
                 </div>
-                <div class="col-6">
+                <div class="col-2">
                     Date
                 </div>
-                <div class="col-6">
+                <div class="col-10">
                     <b>@Model.Date</b>
                 </div>
-                <div class="col-6">
+                <div class="col-2">
                     Time
                 </div>
-                <div class="col-6">
+                <div class="col-10">
                     <b>@Model.Time.ToString(@"hh\:mm")</b>
                 </div>
-                <div class="col-6">
+                <div class="col-2">
                     Room
                 </div>
-                <div class="col-6">
+                <div class="col-10">
                     <b>@Model.RoomNo</b>
                 </div>
-                <div class="col-6">
+                <div class="col-2">
                     Seat
                 </div>
-                <div class="col-6">
+                <div class="col-10">
                     @foreach ( var item in Model.Seats) {
                         <buton type="button" class="btn btn-success btn-sm mr-2 mb-2 disabled" style="opacity:1">
                             @item
                         </buton>
                     }
                 </div>
-                <div class="col-6">
+                <div class="col-2">
                     Price per Ticket
                 </div>
-                <div class="col-6">
+                <div class="col-10">
                     <b>RM @(Math.Round( (decimal)@Model.Price, 2, MidpointRounding.AwayFromZero ))</b>
                 </div>
-                <div class="col-6">
+                <div class="col-2">
                     Total Amount
                 </div>
-                <div class="col-6">
+                <div class="col-10">
                     <b>RM @(Math.Round( (decimal)@Model.TotalAmount, 2, MidpointRounding.AwayFromZero ))</b>
                 </div>
                 <div class="col">

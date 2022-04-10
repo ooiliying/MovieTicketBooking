@@ -33,6 +33,23 @@
     <div class="space"></div>
 
     <div class="row">
+        <div class="col text-end">
+            <input type="checkbox" class="btn-check disabled" id="availble" autocomplete="off" value="Availble">
+            <label class="btn btn-danger disabled demo" for="availble">Availble</label>
+        </div>
+        <div class="col text-center">
+            <input type="checkbox" class="btn-check disabled" id="selected" autocomplete="off" value="Selected">
+            <label class="btn btn-success disabled demo" for="selected">Selected</label>
+        </div>
+        <div class="col">
+            <input type="checkbox" class="btn-check disabled" id="sold" autocomplete="off" value="Sold">
+            <label class="btn btn-secondary disabled demo" for="sold">Sold</label>
+        </div>
+    </div>
+
+    <div class="space"></div>
+
+    <div class="row">
         @foreach (var item in Model.Seats) {
             var id = $"btn-check-{item}";
             <div class="col-xs-1-10">
@@ -107,6 +124,13 @@
         width: 100%;
         background-color: white;
         box-shadow: 0 15px 18px 2px grey;
+    }
+
+    .demo{
+        width: auto;
+        border-color:white !important;
+        opacity:1 !important;
+        margin: 5px;
     }
 
     .seat{
