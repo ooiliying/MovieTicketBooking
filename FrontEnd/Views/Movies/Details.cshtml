@@ -77,7 +77,7 @@
             }
         </div>
         <div class="tab-pane fade" id="day-2">
-            @if(Model.ReleasedDateTimesDay1 != null){
+            @if(Model.ReleasedDateTimesDay2 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay2) 
                 {
                     <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { Id = rdt.RoomId, MovieId = Model.Id, Date = rdt.Date, Time = rdt.Time, Price = Model.Price })'">
@@ -89,7 +89,7 @@
             }
         </div>
         <div class="tab-pane fade" id="day-3">
-            @if(Model.ReleasedDateTimesDay1 != null){
+            @if(Model.ReleasedDateTimesDay3 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay3) 
                 {
                     <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { Id = rdt.RoomId, MovieId = Model.Id, Date = rdt.Date, Time = rdt.Time, Price = Model.Price })'">
@@ -101,7 +101,7 @@
             }
         </div>
         <div class="tab-pane fade show" id="day-4">
-            @if(Model.ReleasedDateTimesDay1 != null){
+            @if(Model.ReleasedDateTimesDay4 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay4) 
                 {
                     <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { Id = rdt.RoomId, MovieId = Model.Id, Date = rdt.Date, Time = rdt.Time, Price = Model.Price })'">
@@ -113,7 +113,7 @@
             }
         </div>
         <div class="tab-pane fade" id="day-5">
-            @if(Model.ReleasedDateTimesDay1 != null){
+            @if(Model.ReleasedDateTimesDay5 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay5) 
                 {
                     <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { Id = rdt.RoomId, MovieId = Model.Id, Date = rdt.Date, Time = rdt.Time, Price = Model.Price })'">
@@ -125,7 +125,7 @@
             }
         </div>
         <div class="tab-pane fade" id="day-6">
-            @if(Model.ReleasedDateTimesDay1 != null){
+            @if(Model.ReleasedDateTimesDay6 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay6) 
                 {
                     <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { Id = rdt.RoomId, MovieId = Model.Id, Date = rdt.Date, Time = rdt.Time, Price = Model.Price })'">
@@ -137,7 +137,7 @@
             }
         </div>
         <div class="tab-pane fade" id="day-7">
-            @if(Model.ReleasedDateTimesDay1 != null){
+            @if(Model.ReleasedDateTimesDay7 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay7) 
                 {
                     <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { Id = rdt.RoomId, MovieId = Model.Id, Date = rdt.Date, Time = rdt.Time, Price = Model.Price })'">

@@ -22,6 +22,7 @@ namespace Admin.Controllers
         public async Task<JsonResult> Create( ReleasedDateTimes releasedDateTimes ) {
             releasedDateTimes.Id = Guid.NewGuid();
             if ( ModelState.IsValid ) {
+                releasedDateTimes.RoomId = await _context.Rooms.Where( o => o.RoomNo == releasedDateTimes.RoomNo ).Select( o => o.Id ).SingleOrDefaultAsync();
                 releasedDateTimes.CreatedDateTime = DateTimeOffset.Now;
                 _context.Add( releasedDateTimes );
                 await _context.SaveChangesAsync();
@@ -31,7 +32,7 @@ namespace Admin.Controllers
                 seatingPlans.Id = Guid.NewGuid();
                 seatingPlans.ReleasedDateTimeId = releasedDateTimes.Id;
                 seatingPlans.MovieId = releasedDateTimes.MovieId;
-                seatingPlans.RoomId = await _context.Rooms.Where( o => o.RoomNo == releasedDateTimes.RoomNo ).Select( o => o.Id ).SingleOrDefaultAsync();
+                seatingPlans.RoomId = releasedDateTimes.RoomId;
                 seatingPlans.PositionStr = await _context.Rooms.Where( o => o.RoomNo == releasedDateTimes.RoomNo ).Select( o => o.SeatPositionStr ).SingleOrDefaultAsync();
                 seatingPlans.CreatedDateTime = DateTimeOffset.Now;
                 _context.Add( seatingPlans );

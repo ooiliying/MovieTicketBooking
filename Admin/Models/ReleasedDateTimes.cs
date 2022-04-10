@@ -18,6 +18,7 @@ namespace Admin.Models
         public TimeSpan Time { get; set; }
         public Guid MovieId { get; set; }
         public int RoomNo { get; set; }
+        public Guid RoomId { get; set; }
         public DateTimeOffset CreatedDateTime { get; set; }
         public DateTimeOffset? UpdatedDateTime { get; set; }
     }
