@@ -25,6 +25,18 @@ namespace Admin.Controllers
                 releasedDateTimes.CreatedDateTime = DateTimeOffset.Now;
                 _context.Add( releasedDateTimes );
                 await _context.SaveChangesAsync();
+
+                //add to seating plan db
+                SeatingPlans seatingPlans = new SeatingPlans();
+                seatingPlans.Id = Guid.NewGuid();
+                seatingPlans.ReleasedDateTimeId = releasedDateTimes.Id;
+                seatingPlans.MovieId = releasedDateTimes.MovieId;
+                seatingPlans.RoomId = await _context.Rooms.Where( o => o.RoomNo == releasedDateTimes.RoomNo ).Select( o => o.Id ).SingleOrDefaultAsync();
+                seatingPlans.PositionStr = await _context.Rooms.Where( o => o.RoomNo == releasedDateTimes.RoomNo ).Select( o => o.SeatPositionStr ).SingleOrDefaultAsync();
+                seatingPlans.CreatedDateTime = DateTimeOffset.Now;
+                _context.Add( seatingPlans );
+                await _context.SaveChangesAsync();
+
                 return Json( releasedDateTimes );
             } else {
                 return Json( null );
