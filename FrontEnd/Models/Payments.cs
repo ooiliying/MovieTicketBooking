@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FrontEnd.Models
 {
-    public partial class Invoices
+    public partial class Payments
     {
         [Key]
         public Guid Id { get; set; }

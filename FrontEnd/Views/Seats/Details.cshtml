@@ -92,24 +92,24 @@
             var price = $("#price").val();
             var bookedSeat = $("#bookedSeat").val();
 
-            var invoices = {};
-            invoices.RoomId = roomId;
-            invoices.RoomNo = roomNo;
-            invoices.MovieId = movieId;
-            invoices.Movie = movie;
-            invoices.Date = date;
-            invoices.Time = time;
-            invoices.Price = price;
-            invoices.BookedSeat = bookedSeat;
+            var payments = {};
+            payments.RoomId = roomId;
+            payments.RoomNo = roomNo;
+            payments.MovieId = movieId;
+            payments.Movie = movie;
+            payments.Date = date;
+            payments.Time = time;
+            payments.Price = price;
+            payments.BookedSeat = bookedSeat;
 
-            if(invoices.BookedSeat === ""){
+            if(payments.BookedSeat === ""){
                 alert("Please select your seat");
             }else{
                 $.ajax({
                     success: function () {
-                        var url = "/Invoices/Index?"+"&RoomId="+invoices.RoomId+"&RoomNo="+invoices.RoomNo+
-                                "&MovieId="+invoices.MovieId+"&Movie="+invoices.Movie+"&Date="+invoices.Date+
-                                "&Time="+invoices.Time+"&Price="+invoices.Price+"&BookedSeat="+invoices.BookedSeat;
+                        var url = "/Payments/Index?"+"&RoomId="+payments.RoomId+"&RoomNo="+payments.RoomNo+
+                                "&MovieId="+payments.MovieId+"&Movie="+payments.Movie+"&Date="+payments.Date+
+                                "&Time="+payments.Time+"&Price="+payments.Price+"&BookedSeat="+payments.BookedSeat;
                         window.location = url;
                     }
                 });

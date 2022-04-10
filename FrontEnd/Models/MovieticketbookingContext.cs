@@ -24,8 +24,8 @@ namespace FrontEnd.Models
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Invoices> Invoices { get; set; }
         public virtual DbSet<Movies> Movies { get; set; }
+        public virtual DbSet<Payments> Payments { get; set; }
         public virtual DbSet<ReleasedDateTimes> ReleasedDateTimes { get; set; }
         public virtual DbSet<Seats> Seats { get; set; }
 
@@ -68,16 +68,16 @@ namespace FrontEnd.Models
                     .HasConstraintName("FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId");
             });
 
-            modelBuilder.Entity<Invoices>(entity =>
+            modelBuilder.Entity<Movies>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<Payments>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.BookedSeatStr).IsFixedLength(true);
-            });
-
-            modelBuilder.Entity<Movies>(entity =>
-            {
-                entity.Property(e => e.Id).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<ReleasedDateTimes>(entity =>

@@ -9,7 +9,7 @@ namespace FrontEnd {
                 .ForMember( x => x.Seats, opt => opt.MapFrom( o => getSeats( o.SeatStr ) ) )
                 .ReverseMap();
 
-            CreateMap<InvoiceViewModel, Invoices>().ReverseMap();
+            CreateMap<PaymentViewModel, Payments>().ReverseMap();
         }
 
         private List<string> getSeats( string seats ) {

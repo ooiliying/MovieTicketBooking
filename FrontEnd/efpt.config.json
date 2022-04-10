@@ -34,11 +34,11 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Invoices]",
+         "Name": "[dbo].[Movies]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Movies]",
+         "Name": "[dbo].[Payments]",
          "ObjectType": 0
       },
       {

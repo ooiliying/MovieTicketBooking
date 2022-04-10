@@ -1,7 +1,7 @@
 ﻿using FrontEnd.Models;
 
 namespace FrontEnd.ViewModels {
-    public class InvoiceViewModel {
+    public class PaymentViewModel {
         public Guid Id { get; set; }
         public Guid RoomId { get; set; }
         public int RoomNo { get; set; }
