@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FrontEnd.Models
 {
-    public partial class Seats
+    public partial class Rooms
     {
         [Key]
         public Guid Id { get; set; }
         public int RoomNo { get; set; }
         [Required]
-        public string SeatStr { get; set; }
+        public string SeatPositionStr { get; set; }
     }
 }

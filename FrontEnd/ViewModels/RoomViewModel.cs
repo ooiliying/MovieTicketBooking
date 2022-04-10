@@ -1,7 +1,7 @@
 ﻿using FrontEnd.Models;
 
 namespace FrontEnd.ViewModels {
-    public class SeatViewModel {
+    public class RoomViewModel {
         public Guid Id { get; set; }
         public int RoomNo { get; set; }
         public Guid MovieId { get; set; }

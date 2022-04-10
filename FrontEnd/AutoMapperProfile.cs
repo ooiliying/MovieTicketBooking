@@ -5,20 +5,20 @@ using FrontEnd.ViewModels;
 namespace FrontEnd {
     public class AutoMapperProfile : Profile{
         public AutoMapperProfile() {
-            CreateMap<Seats, SeatViewModel>()
-                .ForMember( x => x.Seats, opt => opt.MapFrom( o => getSeats( o.SeatStr ) ) )
+            CreateMap<Rooms, RoomViewModel>()
+                .ForMember( x => x.Seats, opt => opt.MapFrom( o => getRooms( o.SeatPositionStr ) ) )
                 .ReverseMap();
 
             CreateMap<PaymentViewModel, Payments>().ReverseMap();
         }
 
-        private List<string> getSeats( string seats ) {
+        private List<string> getRooms( string rooms ) {
 
-            if ( string.IsNullOrEmpty( seats ) ) {
+            if ( string.IsNullOrEmpty( rooms ) ) {
                 return null;
             }
 
-            return seats.Split( ',' ).ToList();
+            return rooms.Split( ',' ).ToList();
 
         }
     }

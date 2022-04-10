@@ -46,7 +46,7 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Seats]",
+         "Name": "[dbo].[Rooms]",
          "ObjectType": 0
       }
    ],
