@@ -39,7 +39,7 @@
                     <h6>Today</h6>
                     @foreach (var rdt in item.ReleasedDateTimes) 
                     {
-                        <buton type="button" class="btn btn-danger mr-3">
+                        <buton type="button" class="btn btn-danger mr-3" onclick="location.href='@Url.Action("Details", "Seats", new { Id = rdt.RoomId, MovieId = item.Id, Date = rdt.Date, Time = rdt.Time })'">
                             <h5 class="mb-0">@rdt.Time.ToString(@"hh\:mm")</h5>
                         </buton>
                     }

@@ -6,7 +6,16 @@
 <div class="space"></div>
 
 <div class="container">
-    <h3 class="text-center">Book Your Ticket</h3>
+    @if (Model.Movie != null) {
+        <h3 class="text-center">@Model.Movie</h3>
+    }
+    @if (Model.Date != null) {
+        <p class="mb-0">Date: @Model.Date</p>
+    }
+    @if (Model.Time != null) {
+        <p class="mb-0">Time: @Model.Time.ToString(@"hh\:mm")</p>
+    }
+    <br />
     <div class="screen"></div>
     <p class="text-center">Screen</p>
     <div class="space"></div>

@@ -34,14 +34,16 @@ namespace FrontEnd.Controllers
 	                    select * from Movies m 
 	                    cross apply(
 		                    select ReleasedDateTimes = JSON_QUERY((
-			                    select Id, Time from ReleasedDateTimes rdt
+			                    select rdt.Id, rdt.Date, rdt.Time, s.Id as RoomId, rdt.RoomNo from ReleasedDateTimes rdt
+								inner join Seats s
+								on rdt.RoomNo = s.RoomNo
 			                    where m.Id = rdt.MovieId 
                                 and rdt.Date =  convert(date, getdate()) -- get today date
                                 order by rdt.Time asc
 			                    for json path
 		                    ))
 	                    )rdt "
-                        + search +
+						+ search +
                     @"for json path
                 ))";
 
