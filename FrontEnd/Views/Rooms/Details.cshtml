@@ -4,12 +4,13 @@
     ViewData["Title"] = "Rooms";
 }
 
-<input type="hidden" id="roomId" value="@Model.Id"/>
+@*<input type="hidden" id="roomId" value="@Model.Id"/>
 <input type="hidden" id="roomNo" value="@Model.RoomNo"/>
 <input type="hidden" id="movieId" value="@Model.MovieId"/>
 <input type="hidden" id="movie" value="@Model.Movie"/>
 <input type="hidden" id="date" value="@Model.Date"/>
-<input type="hidden" id="time" value="@Model.Time"/>
+<input type="hidden" id="time" value="@Model.Time"/>*@
+<input type="hidden" id="releasedDateTimeId" value="@Model.ReleasedDateTimeId"/>
 <input type="hidden" id="price" value="@Model.Price"/>
 
 <div class="space"></div>
@@ -49,15 +50,32 @@
 
     <div class="space"></div>
 
-    <div class="row">
-        @foreach (var item in Model.Seats) {
+  @*  <div class="row">
+        @foreach (var item in Model.Seats.Select(o => o.SeatNo)) {
             var id = $"btn-check-{item}";
             <div class="col-xs-1-10">
                 <input type="checkbox" class="btn-check" id="@id" autocomplete="off" value="@item">
                 <label class="btn btn-danger seat" for="@id">@item</label>
             </div>
         }
+    </div>*@
+
+      <div class="row">
+        @foreach (var item in Model.Seats) {
+            var id = $"btn-check-{item.SeatNo}";
+            var seatClass = "";
+            @if (item.IsOccupied) {
+                seatClass = "btn btn-secondary disabled seat-occupied";
+            } else {
+                seatClass = "btn btn-danger seat";
+            }
+            <div class="col-xs-1-10">
+                <input type="checkbox" class="btn-check" id="@id" autocomplete="off" value="@item.SeatNo">
+                <label class="@seatClass" for="@id">@item.SeatNo</label>
+            </div>
+        }
     </div>
+
     <input type="hidden" id="bookedSeat" />
     <div class="row">
         <div class="col text-end">
@@ -81,24 +99,48 @@
             $('#bookedSeat').val(checkedArr.toString());
         })
 
+        //$("body").on("click", "#btnProceed", function () {
+        //    console.log("click");
+        //    var roomId = $("#roomId").val();
+        //    var roomNo = $("#roomNo").val();
+        //    var movieId = $("#movieId").val();
+        //    var movie = $("#movie").val();
+        //    var date = $("#date").val();
+        //    var time = $("#time").val();
+        //    var price = $("#price").val();
+        //    var bookedSeat = $("#bookedSeat").val();
+
+        //    var payments = {};
+        //    payments.RoomId = roomId;
+        //    payments.RoomNo = roomNo;
+        //    payments.MovieId = movieId;
+        //    payments.Movie = movie;
+        //    payments.Date = date;
+        //    payments.Time = time;
+        //    payments.Price = price;
+        //    payments.BookedSeat = bookedSeat;
+
+        //    if(payments.BookedSeat === ""){
+        //        alert("Please select your seat");
+        //    }else{
+        //        $.ajax({
+        //            success: function () {
+        //                var url = "/Payments/Index?"+"&RoomId="+payments.RoomId+"&RoomNo="+payments.RoomNo+
+        //                        "&MovieId="+payments.MovieId+"&Movie="+payments.Movie+"&Date="+payments.Date+
+        //                        "&Time="+payments.Time+"&Price="+payments.Price+"&BookedSeat="+payments.BookedSeat;
+        //                window.location = url;
+        //            }
+        //        });
+        //    }
+        //});
         $("body").on("click", "#btnProceed", function () {
             console.log("click");
-            var roomId = $("#roomId").val();
-            var roomNo = $("#roomNo").val();
-            var movieId = $("#movieId").val();
-            var movie = $("#movie").val();
-            var date = $("#date").val();
-            var time = $("#time").val();
+            var releasedDateTimeId = $("#releasedDateTimeId").val();
             var price = $("#price").val();
             var bookedSeat = $("#bookedSeat").val();
 
             var payments = {};
-            payments.RoomId = roomId;
-            payments.RoomNo = roomNo;
-            payments.MovieId = movieId;
-            payments.Movie = movie;
-            payments.Date = date;
-            payments.Time = time;
+            payments.ReleasedDateTimeId = releasedDateTimeId;
             payments.Price = price;
             payments.BookedSeat = bookedSeat;
 
@@ -107,9 +149,7 @@
             }else{
                 $.ajax({
                     success: function () {
-                        var url = "/Payments/Index?"+"&RoomId="+payments.RoomId+"&RoomNo="+payments.RoomNo+
-                                "&MovieId="+payments.MovieId+"&Movie="+payments.Movie+"&Date="+payments.Date+
-                                "&Time="+payments.Time+"&Price="+payments.Price+"&BookedSeat="+payments.BookedSeat;
+                        var url = "/Payments/Index?"+"&ReleasedDateTimeId="+payments.ReleasedDateTimeId+"&Price="+payments.Price+"&BookedSeat="+payments.BookedSeat;
                         window.location = url;
                     }
                 });

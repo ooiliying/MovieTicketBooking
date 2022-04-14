@@ -28,6 +28,7 @@ namespace FrontEnd.Models
         public virtual DbSet<Payments> Payments { get; set; }
         public virtual DbSet<ReleasedDateTimes> ReleasedDateTimes { get; set; }
         public virtual DbSet<Rooms> Rooms { get; set; }
+        public virtual DbSet<SeatingPlans> SeatingPlans { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -86,6 +87,11 @@ namespace FrontEnd.Models
             });
 
             modelBuilder.Entity<Rooms>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<SeatingPlans>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
             });

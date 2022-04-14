@@ -8,9 +8,18 @@ namespace FrontEnd.ViewModels {
         public string Movie { get; set; }
         public string Date { get; set; }
         public TimeSpan Time { get; set; }
-        public List<string> Seats { get; set; }
-        public string BookedSeat { get; set; }
+        public Guid ReleasedDateTimeId { get; set; }
+        //public List<string> Seats { get; set; }
+        //public string BookedSeat { get; set; }
+        public PositionPlan[] Seats { get; set; }
         public decimal? Price { get; set; }
-         
+
+        public class PositionPlan {
+            public string SeatNo { get; set; }
+            public bool IsOccupied { get; set; }
+
+        }
+
+
     }
 }

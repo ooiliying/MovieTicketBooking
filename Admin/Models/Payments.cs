@@ -13,6 +13,7 @@ namespace Admin.Models
         [Key]
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
+        public Guid ReleasedDateTimeId { get; set; }
         public Guid MovieId { get; set; }
         [Required]
         [StringLength(10)]

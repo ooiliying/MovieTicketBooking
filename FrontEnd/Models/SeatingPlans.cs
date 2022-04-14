@@ -8,19 +8,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FrontEnd.Models
 {
-    public partial class Payments
+    public partial class SeatingPlans
     {
         [Key]
         public Guid Id { get; set; }
-        public Guid UserId { get; set; }
         public Guid ReleasedDateTimeId { get; set; }
         public Guid MovieId { get; set; }
-        [Required]
-        [StringLength(10)]
-        public string BookedSeatStr { get; set; }
         public Guid RoomId { get; set; }
-        [Column(TypeName = "money")]
-        public decimal TotalAmount { get; set; }
+        [Required]
+        public string PositionStr { get; set; }
+        [Required]
+        public string PositionPlanJson { get; set; }
+        public string BookedStr { get; set; }
+        public string OccupiedPositionJson { get; set; }
         public DateTimeOffset CreatedDateTime { get; set; }
+        public DateTimeOffset? UpdatedDateTime { get; set; }
     }
 }

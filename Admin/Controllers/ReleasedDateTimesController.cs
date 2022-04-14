@@ -33,7 +33,8 @@ namespace Admin.Controllers
                 seatingPlans.ReleasedDateTimeId = releasedDateTimes.Id;
                 seatingPlans.MovieId = releasedDateTimes.MovieId;
                 seatingPlans.RoomId = releasedDateTimes.RoomId;
-                seatingPlans.PositionStr = await _context.Rooms.Where( o => o.RoomNo == releasedDateTimes.RoomNo ).Select( o => o.SeatPositionStr ).SingleOrDefaultAsync();
+                seatingPlans.PositionPlanJson = await _context.Rooms.Where( o => o.RoomNo == releasedDateTimes.RoomNo ).Select( o => o.SeatPositionJson ).SingleOrDefaultAsync();
+                seatingPlans.OccupiedPositionJson = await _context.Rooms.Where( o => o.RoomNo == releasedDateTimes.RoomNo ).Select( o => o.SeatPositionJson ).SingleOrDefaultAsync();
                 seatingPlans.CreatedDateTime = DateTimeOffset.Now;
                 _context.Add( seatingPlans );
                 await _context.SaveChangesAsync();

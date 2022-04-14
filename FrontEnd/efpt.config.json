@@ -48,6 +48,10 @@
       {
          "Name": "[dbo].[Rooms]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SeatingPlans]",
+         "ObjectType": 0
       }
    ],
    "UiHint": "(localdb)\\LocalDBDemo.MovieTicketBooking",

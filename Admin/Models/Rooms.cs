@@ -15,5 +15,6 @@ namespace Admin.Models
         public int RoomNo { get; set; }
         [Required]
         public string SeatPositionStr { get; set; }
+        public string SeatPositionJson { get; set; }
     }
 }

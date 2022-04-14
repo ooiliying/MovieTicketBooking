@@ -3,6 +3,7 @@
 namespace FrontEnd.ViewModels {
     public class PaymentViewModel {
         public Guid Id { get; set; }
+        public Guid ReleasedDateTimeId { get; set; }
         public Guid RoomId { get; set; }
         public int RoomNo { get; set; }
         public Guid MovieId { get; set; }
