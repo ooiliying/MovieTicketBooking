@@ -6,8 +6,6 @@
 }
 
 <input type="hidden" id="releasedDateTimeId" value="@Model.ReleasedDateTimeId"/>
-@*<input type="hidden" id="roomId" value="@Model.RoomId"/>
-<input type="hidden" id="movieId" value="@Model.MovieId"/>*@
 <input type="hidden" id="bookedSeat" value="@Model.BookedSeat"/>
 <input type="hidden" id="totalAmount" value="@Model.TotalAmount"/>
 
@@ -85,8 +83,6 @@
             var bookedSeat = $("#bookedSeat").val();
 
             var payments = {};
-            //payments.RoomId = roomId;
-            //payments.MovieId = movieId;
             payments.ReleasedDateTimeId = releasedDateTimeId;
             payments.TotalAmount = totalAmount;
             payments.BookedSeat = bookedSeat;
