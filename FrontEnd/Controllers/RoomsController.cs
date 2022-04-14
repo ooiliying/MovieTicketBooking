@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using FrontEnd.Models;
 using FrontEnd.ViewModels;
 using AutoMapper;
+using static FrontEnd.ViewModels.RoomViewModel;
+using Newtonsoft.Json;
 
 namespace FrontEnd.Controllers
 {
@@ -28,19 +30,23 @@ namespace FrontEnd.Controllers
                 return NotFound();
             }
 
-            var r = await _context.ReleasedDateTimes
+            var db_releasedDateTimes = await _context.ReleasedDateTimes
                 .FirstOrDefaultAsync( m => m.Id == releasedDateTimeId );
 
-            var s = await _context.Rooms
-                .FirstOrDefaultAsync( m => m.Id == r.RoomId );
+            var db_rooms = await _context.Rooms
+                .FirstOrDefaultAsync( m => m.Id == db_releasedDateTimes.RoomId );
 
-            var seats = _mapper.Map<RoomViewModel>( s );
+            var db_seatingPlans = await _context.SeatingPlans
+               .FirstOrDefaultAsync( m => m.ReleasedDateTimeId == releasedDateTimeId );
+
+            var seats = _mapper.Map<RoomViewModel>( db_rooms );
             seats.ReleasedDateTimeId = await _context.ReleasedDateTimes.Where( m => m.Id == releasedDateTimeId ).Select( o => o.Id ).SingleOrDefaultAsync();
-            seats.MovieId = await _context.Movies.Where( m => m.Id == r.MovieId ).Select( o => o.Id ).SingleOrDefaultAsync();
-            seats.Movie = await _context.Movies.Where( m => m.Id == r.MovieId ).Select( o => o.Title ).SingleOrDefaultAsync();
-            seats.Date = r.Date;
-            seats.Time = r.Time;
+            seats.MovieId = await _context.Movies.Where( m => m.Id == db_releasedDateTimes.MovieId ).Select( o => o.Id ).SingleOrDefaultAsync();
+            seats.Movie = await _context.Movies.Where( m => m.Id == db_releasedDateTimes.MovieId ).Select( o => o.Title ).SingleOrDefaultAsync();
+            seats.Date = db_releasedDateTimes.Date;
+            seats.Time = db_releasedDateTimes.Time;
             seats.Price = price;
+            seats.Seats = JsonConvert.DeserializeObject<PositionPlan[]>( db_seatingPlans.OccupiedPositionJson );
 
             if ( seats == null ) {
                 return NotFound();

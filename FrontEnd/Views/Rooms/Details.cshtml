@@ -48,13 +48,13 @@
             var id = $"btn-check-{item.SeatNo}";
             var seatClass = "";
             @if (item.IsOccupied) {
-                seatClass = "btn btn-secondary disabled seat-occupied";
+                seatClass = "btn-secondary disabled";
             } else {
-                seatClass = "btn btn-danger seat";
+                seatClass = "btn-danger seat";
             }
             <div class="col-xs-1-10">
                 <input type="checkbox" class="btn-check" id="@id" autocomplete="off" value="@item.SeatNo">
-                <label class="@seatClass" for="@id">@item.SeatNo</label>
+                <label class="@($"btn seat {seatClass}")" for="@id">@item.SeatNo</label>
             </div>
         }
     </div>
