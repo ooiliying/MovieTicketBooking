@@ -66,7 +66,7 @@
             </td>
             <td class="RoomNo">
                 <span>@item.RoomNo</span>
-                <input type="time" value="@item.RoomNo" style="display:none" class="form-control"/>
+                <input type="text" value="@item.RoomNo" style="display:none" class="form-control"/>
             </td>
             <td class="text-end">
                 <button type="button" class="Edit btn btn-secondary" onclick="location.href=javascript:;">
@@ -180,7 +180,7 @@
             releasedDateTimes.Id = row.find(".Id").find("span").html();
             releasedDateTimes.Date = row.find(".Date").find("span").html();
             releasedDateTimes.Time = row.find(".Time").find("span").html();
-            releasedDateTimes.Time = row.find(".RoomNo").find("span").html();
+            releasedDateTimes.RoomNo = row.find(".RoomNo").find("span").html();
             $.ajax({
                 type: "POST",
                 url: "/ReleasedDateTimes/Edit",

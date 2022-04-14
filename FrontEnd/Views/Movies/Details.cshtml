@@ -68,7 +68,11 @@
             @if(Model.ReleasedDateTimesDay1 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay1) 
                 {
-                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
+                    var disabledClass = "";
+                    @if (rdt.Time < @DateTime.Now.TimeOfDay) {
+                        disabledClass = "disabled";
+                    } 
+                    <buton type="button" class="@($"btn btn-light mt-3 mr-5 ml-0 px-5 {disabledClass}")" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
                         @rdt.Time.ToString(@"hh\:mm")
                     </buton>
                 }
@@ -80,7 +84,7 @@
             @if(Model.ReleasedDateTimesDay2 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay2) 
                 {
-                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
+                    <buton type="button" class="btn btn-light mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
                         @rdt.Time.ToString(@"hh\:mm")
                     </buton>
                 }
@@ -92,7 +96,7 @@
             @if(Model.ReleasedDateTimesDay3 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay3) 
                 {
-                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
+                    <buton type="button" class="btn btn-light mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
                         @rdt.Time.ToString(@"hh\:mm")
                     </buton>
                 }
@@ -104,7 +108,7 @@
             @if(Model.ReleasedDateTimesDay4 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay4) 
                 {
-                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
+                    <buton type="button" class="btn btn-light mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
                         @rdt.Time.ToString(@"hh\:mm")
                     </buton>
                 }
@@ -116,7 +120,7 @@
             @if(Model.ReleasedDateTimesDay5 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay5) 
                 {
-                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
+                    <buton type="button" class="btn btn-light mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
                         @rdt.Time.ToString(@"hh\:mm")
                     </buton>
                 }
@@ -128,7 +132,7 @@
             @if(Model.ReleasedDateTimesDay6 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay6) 
                 {
-                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
+                    <buton type="button" class="btn btn-light mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
                         @rdt.Time.ToString(@"hh\:mm")
                     </buton>
                 }
@@ -140,7 +144,7 @@
             @if(Model.ReleasedDateTimesDay7 != null){
                 @foreach ( var rdt in Model.ReleasedDateTimesDay7) 
                 {
-                    <buton type="button" class="btn btn-secondary mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
+                    <buton type="button" class="btn btn-light mt-3 mr-5 ml-0 px-5" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = Model.Price })'">
                         @rdt.Time.ToString(@"hh\:mm")
                     </buton>
                 }

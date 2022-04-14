@@ -46,15 +46,15 @@
       <div class="row">
         @foreach (var item in Model.Seats) {
             var id = $"btn-check-{item.SeatNo}";
-            var seatClass = "";
+            var disabledClass = "";
             @if (item.IsOccupied) {
-                seatClass = "btn-secondary disabled";
+                disabledClass = "btn-secondary disabled";
             } else {
-                seatClass = "btn-danger seat";
+                disabledClass = "btn-danger seat";
             }
             <div class="col-xs-1-10">
                 <input type="checkbox" class="btn-check" id="@id" autocomplete="off" value="@item.SeatNo">
-                <label class="@($"btn seat {seatClass}")" for="@id">@item.SeatNo</label>
+                <label class="@($"btn seat {disabledClass}")" for="@id">@item.SeatNo</label>
             </div>
         }
     </div>
