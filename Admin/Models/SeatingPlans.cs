@@ -16,10 +16,7 @@ namespace Admin.Models
         public Guid MovieId { get; set; }
         public Guid RoomId { get; set; }
         [Required]
-        public string PositionStr { get; set; }
-        [Required]
         public string PositionPlanJson { get; set; }
-        public string BookedStr { get; set; }
         public string OccupiedPositionJson { get; set; }
         public DateTimeOffset CreatedDateTime { get; set; }
         public DateTimeOffset? UpdatedDateTime { get; set; }

@@ -79,7 +79,6 @@ namespace FrontEnd.Controllers
                     int i = list.FindIndex( x => x.SeatNo == b );
                     list[i] = new PositionPlan { SeatNo = b, IsOccupied = true };
                 }
-                db_seatingPlans.BookedStr = bookedSeat;
                 db_seatingPlans.OccupiedPositionJson = JsonConvert.SerializeObject( list );
                 db_seatingPlans.UpdatedDateTime = DateTimeOffset.Now;
                 _context.Update( db_seatingPlans );

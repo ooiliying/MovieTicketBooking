@@ -13,8 +13,6 @@ namespace Admin.Models
         [Key]
         public Guid Id { get; set; }
         public int RoomNo { get; set; }
-        [Required]
-        public string SeatPositionStr { get; set; }
         public string SeatPositionJson { get; set; }
     }
 }
