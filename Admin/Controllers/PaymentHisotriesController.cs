@@ -14,17 +14,17 @@ using Newtonsoft.Json;
 
 namespace Admin.Controllers
 {
-    public class SalesController : Controller
+    public class PaymentHistoriesController : Controller
     {
         private readonly MovieTicketBookingContext _context;
         private readonly IMapper _mapper;
 
-        public SalesController( MovieTicketBookingContext context, IMapper mapper ) {
+        public PaymentHistoriesController( MovieTicketBookingContext context, IMapper mapper ) {
             _context = context;
             _mapper = mapper;
         }
 
-        // GET: Sales
+        // GET: Payment Histories
         public async Task<IActionResult> Index() 
         {
             var q = @"select q = JSON_QUERY((
@@ -49,7 +49,7 @@ namespace Admin.Controllers
                     ))";
 
             var dataJson = _context.Database.GetDbConnection().QueryFirst<string>( q );
-            var resultList = JsonConvert.DeserializeObject<SaleViewModel[]>( dataJson ?? "[]" );
+            var resultList = JsonConvert.DeserializeObject<PaymentHistoryViewModel[]>( dataJson ?? "[]" );
             await Task.CompletedTask;
             return View( resultList );
         }

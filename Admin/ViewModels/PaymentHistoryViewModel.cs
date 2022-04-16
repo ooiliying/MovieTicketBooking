@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Admin.ViewModels
 {
-    public partial class SaleViewModel
+    public partial class PaymentHistoryViewModel
     {
         public Guid Id { get; set; }
         public string Username { get; set; }
