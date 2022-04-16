@@ -17,8 +17,7 @@ namespace Admin.Models
         [StringLength(128)]
         public string ProviderKey { get; set; }
         [Key]
-        [StringLength(128)]
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
         [InverseProperty(nameof(AspNetUsers.AspNetUserLogins))]

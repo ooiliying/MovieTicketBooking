@@ -7,6 +7,7 @@ namespace Admin {
         public AutoMapperProfile() {
             CreateMap<MovieViewModel, Movies>().ReverseMap();
             CreateMap<MovieViewModel.ReleasedDateTime, ReleasedDateTimes>().ReverseMap();
+            CreateMap<SaleViewModel, Payments>().ReverseMap();
         }
     }
 }

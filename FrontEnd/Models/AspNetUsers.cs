@@ -18,8 +18,7 @@ namespace FrontEnd.Models
         }
 
         [Key]
-        [StringLength(128)]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         [StringLength(256)]
         public string Email { get; set; }
         public bool? EmailConfirmed { get; set; }

@@ -69,6 +69,11 @@ namespace FrontEnd.Models
                     .HasConstraintName("FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId");
             });
 
+            modelBuilder.Entity<AspNetUsers>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
             modelBuilder.Entity<Movies>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();

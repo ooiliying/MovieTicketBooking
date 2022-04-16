@@ -1,31 +1,31 @@
-﻿@model IEnumerable<Admin.Models.Payments>
+﻿@model IEnumerable<Admin.ViewModels.SaleViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sale";
 }
 
-<h1>Index</h1>
+<h1>Sale</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserId)
+                @Html.DisplayNameFor(model => model.Username)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReleasedDateTimeId)
+                @Html.DisplayNameFor(model => model.ShowDate)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.ShowTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MovieId)
+                @Html.DisplayNameFor(model => model.Movie)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BookedSeatStr)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RoomId)
+                @Html.DisplayNameFor(model => model.RoomNo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TotalAmount)
@@ -33,37 +33,34 @@
             <th>
                 @Html.DisplayNameFor(model => model.CreatedDateTime)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
+                @Html.DisplayFor(modelItem => item.Username)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReleasedDateTimeId)
+                @Html.DisplayFor(modelItem => item.ShowDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MovieId)
+                @Html.DisplayFor(modelItem => item.ShowTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BookedSeatStr)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RoomId)
+                @Html.DisplayFor(modelItem => item.RoomNo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TotalAmount)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedDateTime)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

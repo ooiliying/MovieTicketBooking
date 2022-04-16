@@ -11,8 +11,7 @@ namespace FrontEnd.Models
     public partial class AspNetUserRoles
     {
         [Key]
-        [StringLength(128)]
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
         [Key]
         [StringLength(128)]
         public string RoleId { get; set; }

@@ -7,40 +7,51 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Admin.Models;
+using AutoMapper;
+using Admin.ViewModels;
+using Dapper;
+using Newtonsoft.Json;
 
 namespace Admin.Controllers
 {
     public class SalesController : Controller
     {
         private readonly MovieTicketBookingContext _context;
+        private readonly IMapper _mapper;
 
-        public SalesController(MovieTicketBookingContext context)
-        {
+        public SalesController( MovieTicketBookingContext context, IMapper mapper ) {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: Sales
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index() 
         {
-            return View(await _context.Payments.ToListAsync());
-        }
+            var q = @"select q = JSON_QUERY((
+                        select * from Payments p
+                        cross apply(
+	                        select u.UserName as Username from AspNetUsers u
+	                        where u.Id = p.UserId
+                        )u
+                        cross apply(
+	                        select m.Title as Movie from Movies m
+	                        where m.Id = p.MovieId
+                        )m
+                        cross apply(
+	                        select r.RoomNo from Rooms r
+	                        where r.Id = p.RoomId
+                        )r
+                        cross apply(
+	                        select dt.Date as ShowDate, dt.Time as ShowTime from ReleasedDateTimes dt
+	                        where dt.Id = p.ReleasedDateTimeId
+                        )dt
+	                    for json path
+                    ))";
 
-        // GET: Sales/Details/5
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var payments = await _context.Payments
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (payments == null)
-            {
-                return NotFound();
-            }
-
-            return View(payments);
+            var dataJson = _context.Database.GetDbConnection().QueryFirst<string>( q );
+            var resultList = JsonConvert.DeserializeObject<SaleViewModel[]>( dataJson ?? "[]" );
+            await Task.CompletedTask;
+            return View( resultList );
         }
     }
 }
