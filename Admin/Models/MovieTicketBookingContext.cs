@@ -82,8 +82,6 @@ namespace Admin.Models
             modelBuilder.Entity<Payments>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.BookedSeatStr).IsFixedLength(true);
             });
 
             modelBuilder.Entity<ReleasedDateTimes>(entity =>

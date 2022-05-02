@@ -39,7 +39,11 @@
                     <h6>Today</h6>
                     @foreach (var rdt in item.ReleasedDateTimes) 
                     {
-                        <buton type="button" class="btn btn-danger mr-3" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = item.Price })'">
+                        var disabledClass = "";
+                        @if (rdt.Time < @DateTime.Now.TimeOfDay) {
+                            disabledClass = "disabled";
+                        } 
+                        <buton type="button" class="@($"btn btn-danger mr-3 {disabledClass}")" onclick="location.href='@Url.Action("Details", "Rooms", new { ReleasedDateTimeId = rdt.Id, Price = item.Price })'">
                             <h5 class="mb-0">@rdt.Time.ToString(@"hh\:mm")</h5>
                         </buton>
                     }

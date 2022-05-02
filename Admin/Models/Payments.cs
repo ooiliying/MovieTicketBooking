@@ -16,7 +16,6 @@ namespace Admin.Models
         public Guid ReleasedDateTimeId { get; set; }
         public Guid MovieId { get; set; }
         [Required]
-        [StringLength(10)]
         public string BookedSeatStr { get; set; }
         public Guid RoomId { get; set; }
         [Column(TypeName = "money")]
