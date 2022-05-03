@@ -36,6 +36,7 @@ namespace FrontEnd.Controllers
             payments.MovieImage = await _context.Movies.Where( m => m.Id == r.MovieId ).Select( o => o.PortraitImage ).SingleOrDefaultAsync();
             payments.MovieId = await _context.Movies.Where( m => m.Id == r.MovieId ).Select( o => o.Id ).SingleOrDefaultAsync();
             payments.Movie = await _context.Movies.Where( m => m.Id == r.MovieId ).Select( o => o.Title ).SingleOrDefaultAsync();
+            payments.RoomNo = await _context.ReleasedDateTimes.Where( m => m.Id == payments.ReleasedDateTimeId ).Select( o => o.RoomNo ).SingleOrDefaultAsync();
             payments.Date = r.Date;
             payments.Time = r.Time;
             return View( payments );
