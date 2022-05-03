@@ -26,5 +26,5 @@
 ![image](https://user-images.githubusercontent.com/102743164/166431792-4fed6112-c464-4368-b20d-e2a8ba4b13be.png)
 
 **4. Payment Page**
-![image](https://user-images.githubusercontent.com/102743164/166433070-c20a63e2-2619-4473-a209-177123b007fc.png)
+![image](https://user-images.githubusercontent.com/102743164/166434214-cb6538c6-2470-402e-ad8c-90c7584cfce0.png)
 
