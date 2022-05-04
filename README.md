@@ -8,7 +8,7 @@
 **3. Released Date Time**
 ![image](https://user-images.githubusercontent.com/102743164/166428912-f0e7b330-c8d3-4de4-b5df-85c202a5aba8.png)
 
-**3. Payment History**
+**3. Customer Payment History**
 ![image](https://user-images.githubusercontent.com/102743164/166429296-31a62e04-08c6-4688-9d42-bf974ba53905.png)
 
 
